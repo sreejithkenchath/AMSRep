@@ -97,7 +97,8 @@
         </div>
     </div>
 
-
+    @if (Roles.IsUserInRole(WebSecurity.CurrentUserName,"User Admin"))
+    {
     <div class="breadcrumb_holder">
         <div class="container">
             <ol class="breadcrumb">
@@ -109,7 +110,35 @@
         </div>
 
     </div>
+    }
+    @if (Roles.IsUserInRole(WebSecurity.CurrentUserName,"User"))
+    {
+    <div class="breadcrumb_holder">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><a href="#">Home</a></li><li><a href="#">About Us</a></li>
+                <li ><span class="activebread">Dashboard</span></li>
+                <li><a href="@Url.Action("Index", "Company")" >Edit Company</a></li>
+                <li><a href="@Url.Action("Users", "Users")" >User Profile</a></li>
+            </ol>
+        </div>
 
+    </div>
+    }
+    @if (Roles.IsUserInRole(WebSecurity.CurrentUserName,"Customer"))
+    {
+    <div class="breadcrumb_holder">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><a href="#">Home</a></li><li><a href="#">About Us</a></li>
+                <li ><span class="activebread">Dashboard</span></li>
+                <li><a href="@Url.Action("Index", "Company")" >Edit Company</a></li>
+                <li><a href="@Url.Action("Users", "Users")" >My Appointments</a></li>
+            </ol>
+        </div>
+
+    </div>
+    }
     <div class="container">
         <div class="row">
             
