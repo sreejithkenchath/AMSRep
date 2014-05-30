@@ -1,0 +1,61 @@
+﻿@model AMS.Company
+
+@{
+    ViewBag.Title = "Edit Company Details";
+   Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Edit Company Details</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>      
+
+        @Html.HiddenFor(model => model.CompanyID)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CompanyName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CompanyName)
+            @Html.ValidationMessageFor(model => model.CompanyName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CompanyAddress)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CompanyAddress)
+            @Html.ValidationMessageFor(model => model.CompanyAddress)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CompanyPhone)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CompanyPhone)
+            @Html.ValidationMessageFor(model => model.CompanyPhone)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CompanyStatus)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CompanyStatus)
+            @Html.ValidationMessageFor(model => model.CompanyStatus)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@*section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}*@

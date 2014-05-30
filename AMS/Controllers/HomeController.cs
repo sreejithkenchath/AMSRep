@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebMatrix.WebData;
+using System.Web.Security;
 
 namespace AMS.Controllers
 {
@@ -10,7 +12,14 @@ namespace AMS.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
+          /*  WebSecurity.CreateUserAndAccount("Hari", "Harihara");
+            Roles.CreateRole("Super Admin");
+            Roles.CreateRole("User Admin");
+            Roles.CreateRole("User");
+            Roles.CreateRole("Customer");
+            Roles.AddUserToRole("Hari", "User Admin"); */
+            
+            ViewBag.Message = "Welcome to Appointment management System!";
 
             return View();
         }

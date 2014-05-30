@@ -1,0 +1,67 @@
+﻿@model AMS.Company
+
+@{
+    ViewBag.Title = "Company Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Company Details</h2>
+
+<fieldset>
+    
+    <table>
+    <tr>
+    <td>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CompanyName)
+    </div>
+    </td>
+    <td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CompanyName)
+    </div>
+    </td>
+    </tr>
+    <tr>
+    <td>
+        <div class="display-label">
+         @Html.DisplayNameFor(model => model.CompanyAddress)
+    </div>
+    </td>
+    <td>
+        <div class="display-field">
+        @Html.DisplayFor(model => model.CompanyAddress)
+    </div>
+    </td>
+    </tr>
+    <tr>
+    <td>
+        <div class="display-label">
+         @Html.DisplayNameFor(model => model.CompanyPhone)
+    </div>
+    </td>
+    <td>
+        <div class="display-field">
+        @Html.DisplayFor(model => model.CompanyPhone)
+    </div>
+    </td>
+    </tr>
+    <tr>
+    <td>
+            <div class="display-label">
+         @Html.DisplayNameFor(model => model.CompanyStatus)
+    </div>
+    </td>
+    <td>
+        <div class="display-field">
+        @Html.DisplayFor(model => model.CompanyStatus)
+    </div>
+    </td>
+    </tr>
+    </table>
+</fieldset>
+
+<p>
+    @Html.ActionLink("Edit", "Edit") |
+    @Html.ActionLink("Back to Home Page", "Index","Home")
+</p>

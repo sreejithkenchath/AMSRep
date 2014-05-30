@@ -40,6 +40,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -156,12 +158,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AMS BLL\CompanyBLL.cs" />
+    <Compile Include="AMS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AMS.edmx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -319,6 +328,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EntityDeploy Include="AMS.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AMS.Designer.cs</LastGenOutput>
+    </EntityDeploy>
     <None Include="Content\fonts\.DS_Store" />
     <None Include="Content\fonts\codropsicons\.DS_Store" />
     <None Include="Content\fonts\codropsicons\codropsicons.eot" />
@@ -331,6 +344,8 @@
     <None Include="Content\fonts\linecons\linecons.ttf" />
     <None Include="Content\fonts\linecons\linecons.woff" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Company\Index.cshtml" />
+    <Content Include="Views\Company\Edit.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

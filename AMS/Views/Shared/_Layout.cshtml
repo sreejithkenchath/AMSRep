@@ -28,9 +28,15 @@
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
      @RenderSection("Styles", false)
+     @if (IsSectionDefined("scripts"))
+{
+    RenderSection("scripts",true);
+}
 </head>
 
 <body>
+
+    
 
     	<!-- Push Wrapper -->
 	<div id="mp-pusher" class="mp-pusher">
@@ -64,9 +70,9 @@
                     </div>
 
                     <div class="col-md-4 col-xs-12 header_right">
-
+                    
                         <div class="user_info">
-                            <a href="@Url.Action("Login", "Account")" class="logout">
+                            <a href="@Url.Action("LogOff", "Account")" class="logout">
                                 <img alt="" src="~/Content/images/logout.png" /></a>
                             @*<span>Welcome <a class="username">User</a></span>*@
                             <section id="login" style="float:right;">
@@ -97,6 +103,8 @@
             <ol class="breadcrumb">
                 <li><a href="#">Home</a></li><li><a href="#">About Us</a></li>
                 <li ><span class="activebread">Dashboard</span></li>
+                <li><a href="@Url.Action("Index", "Company")" >Edit Company</a></li>
+                <li><a href="@Url.Action("Users", "Users")" >Users</a></li>
             </ol>
         </div>
 
