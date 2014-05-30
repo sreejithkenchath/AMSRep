@@ -10,6 +10,7 @@ namespace AMS.Controllers
 {
     public class HomeController : Controller
     {
+        [Authorize]
         public ActionResult Index()
         {
           /*  WebSecurity.CreateUserAndAccount("Hari", "Harihara");
@@ -27,7 +28,7 @@ namespace AMS.Controllers
         public ActionResult About()
         {
             ViewBag.Message = "Your app description page.";
-
+         //   int id =Convert.ToInt32( Membership.GetUser().ProviderUserKey.ToString());
             return View();
         }
 

@@ -13,6 +13,7 @@ namespace AMS_SuperAdmin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+           
             Roles.IsUserInRole("siva", "Admin");
         }
     }

@@ -345,6 +345,7 @@
     <None Include="Content\fonts\linecons\linecons.woff" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Company\Index.cshtml" />
+    <Content Include="Views\Account\test.cshtml" />
     <Content Include="Views\Company\Edit.cshtml" />
   </ItemGroup>
   <PropertyGroup>
