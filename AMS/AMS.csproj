@@ -171,6 +171,34 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\bizcare.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\component.css" />
+    <Content Include="Content\css\icons.css" />
+    <Content Include="Content\css\main.css" />
+    <Content Include="Content\fonts\codropsicons\codropsicons.svg" />
+    <Content Include="Content\fonts\codropsicons\license.txt" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\fonts\linecons\license.txt" />
+    <Content Include="Content\fonts\linecons\linecons.dev.svg" />
+    <Content Include="Content\fonts\linecons\linecons.svg" />
+    <Content Include="Content\fonts\linecons\lte-ie7.js" />
+    <Content Include="Content\fonts\linecons\Read Me.txt" />
+    <Content Include="Content\images\bizcare_bg.png" />
+    <Content Include="Content\images\logout.png" />
+    <Content Include="Content\images\logout_hov.png" />
+    <Content Include="Content\images\menu_icon.png" />
+    <Content Include="Content\images\menu_icon_hov.png" />
+    <Content Include="Content\images\user_icon.png" />
+    <Content Include="Content\js\bootstrap.js" />
+    <Content Include="Content\js\bootstrap.min.js" />
+    <Content Include="Content\js\classie.js" />
+    <Content Include="Content\js\html5.js" />
+    <Content Include="Content\js\jquery-1.10.2.js" />
+    <Content Include="Content\js\jquery.min.js" />
+    <Content Include="Content\js\mlpushmenu.js" />
+    <Content Include="Content\js\modernizr.custom.js" />
+    <Content Include="Content\js\sb-admin.js" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -242,7 +270,9 @@
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -287,6 +317,20 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\fonts\.DS_Store" />
+    <None Include="Content\fonts\codropsicons\.DS_Store" />
+    <None Include="Content\fonts\codropsicons\codropsicons.eot" />
+    <None Include="Content\fonts\codropsicons\codropsicons.ttf" />
+    <None Include="Content\fonts\codropsicons\codropsicons.woff" />
+    <None Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <None Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="Content\fonts\linecons\linecons.eot" />
+    <None Include="Content\fonts\linecons\linecons.ttf" />
+    <None Include="Content\fonts\linecons\linecons.woff" />
+    <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

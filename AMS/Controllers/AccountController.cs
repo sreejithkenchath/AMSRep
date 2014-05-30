@@ -13,7 +13,7 @@ using AMS.Models;
 
 namespace AMS.Controllers
 {
-    [Authorize]
+    
     [InitializeSimpleMembership]
     public class AccountController : Controller
     {
@@ -41,7 +41,7 @@ namespace AMS.Controllers
             }
 
             // If we got this far, something failed, redisplay form
-            ModelState.AddModelError("", "The user name or password provided is incorrect.");
+           // ModelState.AddModelError("", "The user name or password provided is incorrect.");
             return View(model);
         }
 
@@ -54,12 +54,12 @@ namespace AMS.Controllers
         {
             WebSecurity.Logout();
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Account");
         }
 
         //
         // GET: /Account/Register
-
+        
         [AllowAnonymous]
         public ActionResult Register()
         {
@@ -79,6 +79,7 @@ namespace AMS.Controllers
                 // Attempt to register the user
                 try
                 {
+                    
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
                     WebSecurity.Login(model.UserName, model.Password);
                     return RedirectToAction("Index", "Home");
