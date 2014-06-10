@@ -13,12 +13,13 @@ namespace AMS.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            /*WebSecurity.CreateUserAndAccount("userhari", "userhari");
+            /*WebSecurity.CreateUserAndAccount("superhari", "superhari");
             Roles.CreateRole("Super Admin");
             Roles.CreateRole("User Admin");
             Roles.CreateRole("User");
             Roles.CreateRole("Customer");
-            Roles.AddUserToRole("userhari", "User"); */
+            Roles.AddUserToRole("superhari", "Super Admin"); */
+            
             
             ViewBag.Message = "Welcome to Appointment management System!";
 
