@@ -11,20 +11,12 @@
 </div>
     @Html.ActionLink("Create New", "AddUser")
 <div class="sidemenu" >
+<p>@ViewBag.message</p>
 <table>
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.MembershipUserID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UserFirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UserLastName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UserTitle)
-        </th>
+            User
+        </th>    
         <th>
             @Html.DisplayNameFor(model => model.UserEmail)
         </th>
@@ -45,16 +37,7 @@
 {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.MembershipUserID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserFirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserLastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserTitle)
+            @Html.DisplayFor(modelItem => item.UserTitle)    @Html.DisplayFor(modelItem => item.UserFirstName) @Html.DisplayFor(modelItem => item.UserLastName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.UserEmail)
@@ -68,7 +51,6 @@
         <td>
             @Html.DisplayFor(modelItem => item.UserStatus)
         </td>
-        
         <td>
             @Html.ActionLink("Edit", "Edit", new { id = item.UserID }) |
             @Html.ActionLink("Delete", "Delete", new { id = item.UserID })
