@@ -1,6 +1,6 @@
 ﻿@{
-    ViewBag.Title = "Add New User";
- Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Add User";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @using (Html.BeginForm("AddUser", "User"))
 {
@@ -18,6 +18,7 @@ Re enter Password : <input id="txtRePassword" name="RePassword" type="password" 
 First Name :<input id="txtFirstName" name="FirstName" type="text" /><br /><br />
 Last Name :<input id="txtLastName" name="LastName" type="text" /><br /><br />
 Phone:<input id="txtPhone" name="Phone" type="text" /><br /><br />
+          
 Email:<input id="txtEmail" name="Email" type="text" /><br /><br />
 Description :<textarea id="txtDesc" name="Desc" cols="20" rows="2"></textarea><br /><br />
 Status :<select id="selectStatus" name="Status">

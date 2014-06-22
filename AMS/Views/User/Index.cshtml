@@ -4,12 +4,13 @@
     ViewBag.Title = "Users";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@using (Html.BeginForm("AddUser", "User"))
+{
+<div class="sidemenu_head" style="font-size:20px;font-weight:bold;">Users
 
-<h2>Index</h2>
-
-<p>
+</div>
     @Html.ActionLink("Create New", "AddUser")
-</p>
+<div class="sidemenu" >
 <table>
     <tr>
         <th>
@@ -36,13 +37,12 @@
         <th>
             @Html.DisplayNameFor(model => model.UserStatus)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CompanyID)
-        </th>
+        
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model)
+{
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.MembershipUserID)
@@ -68,15 +68,13 @@
         <td>
             @Html.DisplayFor(modelItem => item.UserStatus)
         </td>
+        
         <td>
-            @Html.DisplayFor(modelItem => item.CompanyID)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.UserID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.UserID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.UserID })
+            @Html.ActionLink("Edit", "Edit", new { id = item.UserID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.UserID })
         </td>
     </tr>
 }
-
 </table>
+</div>
+}

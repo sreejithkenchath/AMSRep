@@ -19,7 +19,7 @@ namespace AMS.Controllers
             Roles.CreateRole("User");
             Roles.CreateRole("Customer");
             Roles.AddUserToRole("superhari", "Super Admin"); */
-            
+
             
             ViewBag.Message = "Welcome to Appointment management System!";
 

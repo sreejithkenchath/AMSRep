@@ -20,13 +20,13 @@ namespace AMS.Controllers
 
         public ActionResult AddUser()
         {
-                     return View();
+                     return View("AddNewUser");
         }
         [HttpPost]
-        public void AddUser(FormCollection collection)
+        public void AddUser(FormCollection collection, User user)
         {
             UserBLL ub = new UserBLL();
-             ub.AddNewUser(collection);
+             ub.AddNewUser(collection,user);
              Index();
         }
     }
