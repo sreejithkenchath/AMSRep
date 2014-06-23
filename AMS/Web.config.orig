@@ -8,9 +8,12 @@
     <!-- For more information on Entity Framework configuration, visit http://go.microsoft.com/fwlink/?LinkID=237468 -->
     <section name="entityFramework" type="System.Data.Entity.Internal.ConfigFile.EntityFrameworkSection, EntityFramework, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false" />
   </configSections>
+<<<<<<< Updated upstream
+=======
   <connectionStrings>
     <add name="AMSConnectionString" connectionString="Data Source=LENOVO-PC\SQLEXPRESS;Initial Catalog=AMS; Integrated Security=SSPI;" providerName="System.Data.SqlClient" />
   <add name="AMSEntities" connectionString="metadata=res://*/AMS.csdl|res://*/AMS.ssdl|res://*/AMS.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=LENOVO-PC\SQLEXPRESS;initial catalog=AMS;integrated security=True;multipleactiveresultsets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" /></connectionStrings>
+>>>>>>> Stashed changes
   <appSettings>
     <add key="webpages:Version" value="2.0.0.0" />
     <add key="webpages:Enabled" value="false" />

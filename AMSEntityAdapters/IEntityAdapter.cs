@@ -6,7 +6,7 @@ using System.Data.Objects.DataClasses;
 
 namespace AMSEntityAdapters 
 {
-    interface IEntityAdapter<T,S> where T: EntityObject
+    interface IEntityAdapter<T,S> 
     {
         T ConvertDTOtoEntity(S s);
         S ConvertEntitytoDTO(T t);

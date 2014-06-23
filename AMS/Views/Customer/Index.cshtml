@@ -1,0 +1,94 @@
+﻿@model AMS.Customer
+
+@{
+
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+    <div class="editor-label">
+            UserName : 
+        </div>
+        <div class="editor-field">
+        <input id="txtUserName" name="UserName" type="text" />
+        </div>
+
+        <div class="editor-label">
+            Password : 
+        </div>
+        <div class="editor-field">
+            <input id="txtPassword" name="Password" type="password" />
+        </div>
+        <div class="editor-label">
+            ReTypePassword : 
+        </div>
+        <div class="editor-field">
+            <input id="txtrePassword" name="ReTypePassword" type="password" />
+        </div>
+        <legend>Customer</legend>
+
+        
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CustFirstName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CustFirstName)
+            @Html.ValidationMessageFor(model => model.CustFirstName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CustLastName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CustLastName)
+            @Html.ValidationMessageFor(model => model.CustLastName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CustEmail)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CustEmail)
+            @Html.ValidationMessageFor(model => model.CustEmail)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CustDescription)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CustDescription)
+            @Html.ValidationMessageFor(model => model.CustDescription)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CustPhone)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CustPhone)
+            @Html.ValidationMessageFor(model => model.CustPhone)
+        </div>
+
+       
+        
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
