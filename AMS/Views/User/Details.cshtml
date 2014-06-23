@@ -1,0 +1,78 @@
+﻿@model AMS.Models.User
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>User</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MembershipUserID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MembershipUserID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UserFirstName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserFirstName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UserLastName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserLastName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UserTitle)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserTitle)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UserEmail)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserEmail)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UserDescription)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserDescription)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UserPhone)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserPhone)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UserStatus)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserStatus)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Company.CompanyName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Company.CompanyName)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.UserID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
