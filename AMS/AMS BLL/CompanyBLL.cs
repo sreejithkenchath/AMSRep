@@ -2,25 +2,33 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using AMS.Repositories;
 
 namespace AMS.AMS_BLL
 {
     public class CompanyBLL
     {
-        AMSEntities ae = new AMSEntities();
+        protected IRepository DataStore { get; set; }
+        protected string[] Includes { get; set; }
+
+        public CompanyBLL()
+        {
+            //TODO: USE DEPENDENCY INJECTION FOR DECOUPLING
+            this.DataStore = new EFRepository();
+        }
         
         public Company GetCompanyDetails(int UserID)
         {
-                int CompID = GetCompanyID(UserID);
-                Company c = ae.Companies.Where(e => e.CompanyID == CompID).SingleOrDefault();
-                return c;
+            User user = DataStore.Get<User>(e => e.MembershipUserID == UserID);
+            Company company = DataStore.Get<Company>(e => e.CompanyID == user.CompanyID);
+            return company;
         }
 
-        int GetCompanyID(int uid)
-        {
-            User u = ae.Users.Where(e => e.MembershipUserID == uid).SingleOrDefault();
-            return u.CompanyID;
-        }
+        //int GetCompany(int uid)
+        //{
+        //  User u = ae.Users.Where(e => e.MembershipUserID == uid).SingleOrDefault();
+        //  return u.CompanyID;
+        //}
 
         public void EditCompany()
         {
