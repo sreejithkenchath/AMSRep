@@ -6,48 +6,72 @@
     <edmx:StorageModels>
       <Schema Namespace="AMSModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="AMSModelStoreContainer">
-          <EntitySet Name="ActivityLog" EntityType="AMSModel.Store.ActivityLog" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ActivityLog" EntityType="AMSModel.Store.ActivityLog" store:Type="Tables" store:Schema="dbo" store:Name="ActivityLog">
+            <DefiningQuery>SELECT 
+      [ActivityLog].[ActivityID] AS [ActivityID], 
+      [ActivityLog].[MembershipID] AS [MembershipID], 
+      [ActivityLog].[TableName] AS [TableName], 
+      [ActivityLog].[DateTime] AS [DateTime], 
+      [ActivityLog].[Action] AS [Action], 
+      [ActivityLog].[IPAddress] AS [IPAddress]
+      FROM [dbo].[ActivityLog] AS [ActivityLog]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="AppointmentAvail" EntityType="AMSModel.Store.AppointmentAvail" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Appointments" EntityType="AMSModel.Store.Appointments" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Company" EntityType="AMSModel.Store.Company" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Customer" EntityType="AMSModel.Store.Customer" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="DayPreferences" EntityType="AMSModel.Store.DayPreferences" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="ErrorLog" EntityType="AMSModel.Store.ErrorLog" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ErrorLog" EntityType="AMSModel.Store.ErrorLog" store:Type="Tables" store:Schema="dbo" store:Name="ErrorLog">
+            <DefiningQuery>SELECT 
+      [ErrorLog].[ErrorID] AS [ErrorID], 
+      [ErrorLog].[Message] AS [Message], 
+      [ErrorLog].[TableName] AS [TableName], 
+      [ErrorLog].[Action] AS [Action]
+      FROM [dbo].[ErrorLog] AS [ErrorLog]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="TimePreferences" EntityType="AMSModel.Store.TimePreferences" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UserPreferences" EntityType="AMSModel.Store.UserPreferences" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Users" EntityType="AMSModel.Store.Users" store:Type="Tables" Schema="dbo" />
-          <AssociationSet Name="FK__Appointme__CustI__3E52440B" Association="AMSModel.Store.FK__Appointme__CustI__3E52440B">
+          <AssociationSet Name="FK__Appointme__CustI__34C8D9D1" Association="AMSModel.Store.FK__Appointme__CustI__34C8D9D1">
             <End Role="Customer" EntitySet="Customer" />
             <End Role="Appointments" EntitySet="Appointments" />
           </AssociationSet>
-          <AssociationSet Name="FK__Appointme__DayPr__3D5E1FD2" Association="AMSModel.Store.FK__Appointme__DayPr__3D5E1FD2">
+          <AssociationSet Name="FK__Appointme__DayPr__33D4B598" Association="AMSModel.Store.FK__Appointme__DayPr__33D4B598">
             <End Role="DayPreferences" EntitySet="DayPreferences" />
             <End Role="AppointmentAvail" EntitySet="AppointmentAvail" />
           </AssociationSet>
-          <AssociationSet Name="FK__Appointme__UserI__3F466844" Association="AMSModel.Store.FK__Appointme__UserI__3F466844">
+          <AssociationSet Name="FK__Appointme__UserI__35BCFE0A" Association="AMSModel.Store.FK__Appointme__UserI__35BCFE0A">
             <End Role="Users" EntitySet="Users" />
             <End Role="Appointments" EntitySet="Appointments" />
           </AssociationSet>
-          <AssociationSet Name="FK__DayPrefer__UserP__403A8C7D" Association="AMSModel.Store.FK__DayPrefer__UserP__403A8C7D">
+          <AssociationSet Name="FK__DayPrefer__UserP__36B12243" Association="AMSModel.Store.FK__DayPrefer__UserP__36B12243">
             <End Role="UserPreferences" EntitySet="UserPreferences" />
             <End Role="DayPreferences" EntitySet="DayPreferences" />
           </AssociationSet>
-          <AssociationSet Name="FK__TimePrefe__DayPr__412EB0B6" Association="AMSModel.Store.FK__TimePrefe__DayPr__412EB0B6">
+          <AssociationSet Name="FK__TimePrefe__DayPr__37A5467C" Association="AMSModel.Store.FK__TimePrefe__DayPr__37A5467C">
             <End Role="DayPreferences" EntitySet="DayPreferences" />
             <End Role="TimePreferences" EntitySet="TimePreferences" />
           </AssociationSet>
-          <AssociationSet Name="FK__UserPrefe__UserI__4222D4EF" Association="AMSModel.Store.FK__UserPrefe__UserI__4222D4EF">
+          <AssociationSet Name="FK__UserPrefe__UserI__38996AB5" Association="AMSModel.Store.FK__UserPrefe__UserI__38996AB5">
             <End Role="Users" EntitySet="Users" />
             <End Role="UserPreferences" EntitySet="UserPreferences" />
           </AssociationSet>
-          <AssociationSet Name="FK__Users__CompanyID__4316F928" Association="AMSModel.Store.FK__Users__CompanyID__4316F928">
+          <AssociationSet Name="FK__Users__CompanyID__398D8EEE" Association="AMSModel.Store.FK__Users__CompanyID__398D8EEE">
             <End Role="Company" EntitySet="Company" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'AMS.dbo.ActivityLog' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
         <EntityType Name="ActivityLog">
           <Key>
             <PropertyRef Name="ActivityID" />
+            <PropertyRef Name="MembershipID" />
+            <PropertyRef Name="TableName" />
+            <PropertyRef Name="DateTime" />
+            <PropertyRef Name="Action" />
+            <PropertyRef Name="IPAddress" />
           </Key>
           <Property Name="ActivityID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="MembershipID" Type="int" Nullable="false" />
@@ -111,9 +135,15 @@
           <Property Name="Day" Type="nvarchar" Nullable="false" MaxLength="3" />
           <Property Name="Status" Type="bit" />
         </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'AMS.dbo.ErrorLog' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
         <EntityType Name="ErrorLog">
           <Key>
             <PropertyRef Name="ErrorID" />
+            <PropertyRef Name="Message" />
+            <PropertyRef Name="TableName" />
+            <PropertyRef Name="Action" />
           </Key>
           <Property Name="ErrorID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Message" Type="nvarchar" Nullable="false" MaxLength="300" />
@@ -155,7 +185,7 @@
           <Property Name="UserStatus" Type="bit" />
           <Property Name="CompanyID" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Appointme__CustI__3E52440B">
+        <Association Name="FK__Appointme__CustI__34C8D9D1">
           <End Role="Customer" Type="AMSModel.Store.Customer" Multiplicity="1" />
           <End Role="Appointments" Type="AMSModel.Store.Appointments" Multiplicity="*" />
           <ReferentialConstraint>
@@ -167,7 +197,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Appointme__DayPr__3D5E1FD2">
+        <Association Name="FK__Appointme__DayPr__33D4B598">
           <End Role="DayPreferences" Type="AMSModel.Store.DayPreferences" Multiplicity="1" />
           <End Role="AppointmentAvail" Type="AMSModel.Store.AppointmentAvail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -179,7 +209,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Appointme__UserI__3F466844">
+        <Association Name="FK__Appointme__UserI__35BCFE0A">
           <End Role="Users" Type="AMSModel.Store.Users" Multiplicity="1" />
           <End Role="Appointments" Type="AMSModel.Store.Appointments" Multiplicity="*" />
           <ReferentialConstraint>
@@ -191,7 +221,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DayPrefer__UserP__403A8C7D">
+        <Association Name="FK__DayPrefer__UserP__36B12243">
           <End Role="UserPreferences" Type="AMSModel.Store.UserPreferences" Multiplicity="1" />
           <End Role="DayPreferences" Type="AMSModel.Store.DayPreferences" Multiplicity="*" />
           <ReferentialConstraint>
@@ -203,7 +233,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TimePrefe__DayPr__412EB0B6">
+        <Association Name="FK__TimePrefe__DayPr__37A5467C">
           <End Role="DayPreferences" Type="AMSModel.Store.DayPreferences" Multiplicity="1" />
           <End Role="TimePreferences" Type="AMSModel.Store.TimePreferences" Multiplicity="*" />
           <ReferentialConstraint>
@@ -215,7 +245,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UserPrefe__UserI__4222D4EF">
+        <Association Name="FK__UserPrefe__UserI__38996AB5">
           <End Role="Users" Type="AMSModel.Store.Users" Multiplicity="1" />
           <End Role="UserPreferences" Type="AMSModel.Store.UserPreferences" Multiplicity="*" />
           <ReferentialConstraint>
@@ -227,7 +257,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Users__CompanyID__4316F928">
+        <Association Name="FK__Users__CompanyID__398D8EEE">
           <End Role="Company" Type="AMSModel.Store.Company" Multiplicity="1" />
           <End Role="Users" Type="AMSModel.Store.Users" Multiplicity="*" />
           <ReferentialConstraint>
@@ -255,31 +285,31 @@
           <EntitySet Name="TimePreferences" EntityType="AMSModel.TimePreference" />
           <EntitySet Name="UserPreferences" EntityType="AMSModel.UserPreference" />
           <EntitySet Name="Users" EntityType="AMSModel.User" />
-          <AssociationSet Name="FK__Appointme__DayPr__3D5E1FD2" Association="AMSModel.FK__Appointme__DayPr__3D5E1FD2">
+          <AssociationSet Name="FK__Appointme__DayPr__33D4B598" Association="AMSModel.FK__Appointme__DayPr__33D4B598">
             <End Role="DayPreferences" EntitySet="DayPreferences" />
             <End Role="AppointmentAvail" EntitySet="AppointmentAvails" />
           </AssociationSet>
-          <AssociationSet Name="FK__Appointme__CustI__3E52440B" Association="AMSModel.FK__Appointme__CustI__3E52440B">
+          <AssociationSet Name="FK__Appointme__CustI__34C8D9D1" Association="AMSModel.FK__Appointme__CustI__34C8D9D1">
             <End Role="Customer" EntitySet="Customers" />
             <End Role="Appointments" EntitySet="Appointments" />
           </AssociationSet>
-          <AssociationSet Name="FK__Appointme__UserI__3F466844" Association="AMSModel.FK__Appointme__UserI__3F466844">
+          <AssociationSet Name="FK__Appointme__UserI__35BCFE0A" Association="AMSModel.FK__Appointme__UserI__35BCFE0A">
             <End Role="Users" EntitySet="Users" />
             <End Role="Appointments" EntitySet="Appointments" />
           </AssociationSet>
-          <AssociationSet Name="FK__Users__CompanyID__4316F928" Association="AMSModel.FK__Users__CompanyID__4316F928">
+          <AssociationSet Name="FK__Users__CompanyID__398D8EEE" Association="AMSModel.FK__Users__CompanyID__398D8EEE">
             <End Role="Company" EntitySet="Companies" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
-          <AssociationSet Name="FK__DayPrefer__UserP__403A8C7D" Association="AMSModel.FK__DayPrefer__UserP__403A8C7D">
+          <AssociationSet Name="FK__DayPrefer__UserP__36B12243" Association="AMSModel.FK__DayPrefer__UserP__36B12243">
             <End Role="UserPreferences" EntitySet="UserPreferences" />
             <End Role="DayPreferences" EntitySet="DayPreferences" />
           </AssociationSet>
-          <AssociationSet Name="FK__TimePrefe__DayPr__412EB0B6" Association="AMSModel.FK__TimePrefe__DayPr__412EB0B6">
+          <AssociationSet Name="FK__TimePrefe__DayPr__37A5467C" Association="AMSModel.FK__TimePrefe__DayPr__37A5467C">
             <End Role="DayPreferences" EntitySet="DayPreferences" />
             <End Role="TimePreferences" EntitySet="TimePreferences" />
           </AssociationSet>
-          <AssociationSet Name="FK__UserPrefe__UserI__4222D4EF" Association="AMSModel.FK__UserPrefe__UserI__4222D4EF">
+          <AssociationSet Name="FK__UserPrefe__UserI__38996AB5" Association="AMSModel.FK__UserPrefe__UserI__38996AB5">
             <End Role="Users" EntitySet="Users" />
             <End Role="UserPreferences" EntitySet="UserPreferences" />
           </AssociationSet>
@@ -287,6 +317,11 @@
         <EntityType Name="ActivityLog">
           <Key>
             <PropertyRef Name="ActivityID" />
+            <PropertyRef Name="MembershipID" />
+            <PropertyRef Name="TableName" />
+            <PropertyRef Name="DateTime" />
+            <PropertyRef Name="Action" />
+            <PropertyRef Name="IPAddress" />
           </Key>
           <Property Name="ActivityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MembershipID" Type="Int32" Nullable="false" />
@@ -303,7 +338,7 @@
           <Property Name="DayPrefID" Type="Int32" Nullable="false" />
           <Property Name="AppDate" Type="DateTime" Nullable="false" />
           <Property Name="Status" Type="Boolean" />
-          <NavigationProperty Name="DayPreference" Relationship="AMSModel.FK__Appointme__DayPr__3D5E1FD2" FromRole="AppointmentAvail" ToRole="DayPreferences" />
+          <NavigationProperty Name="DayPreference" Relationship="AMSModel.FK__Appointme__DayPr__33D4B598" FromRole="AppointmentAvail" ToRole="DayPreferences" />
         </EntityType>
         <EntityType Name="Appointment">
           <Key>
@@ -317,8 +352,8 @@
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <Property Name="CustID" Type="Int32" Nullable="false" />
           <Property Name="Status" Type="Boolean" />
-          <NavigationProperty Name="Customer" Relationship="AMSModel.FK__Appointme__CustI__3E52440B" FromRole="Appointments" ToRole="Customer" />
-          <NavigationProperty Name="User" Relationship="AMSModel.FK__Appointme__UserI__3F466844" FromRole="Appointments" ToRole="Users" />
+          <NavigationProperty Name="Customer" Relationship="AMSModel.FK__Appointme__CustI__34C8D9D1" FromRole="Appointments" ToRole="Customer" />
+          <NavigationProperty Name="User" Relationship="AMSModel.FK__Appointme__UserI__35BCFE0A" FromRole="Appointments" ToRole="Users" />
         </EntityType>
         <EntityType Name="Company">
           <Key>
@@ -330,7 +365,7 @@
           <Property Name="CompanyPhone" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="CompanyLogo" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="CompanyStatus" Type="Boolean" />
-          <NavigationProperty Name="Users" Relationship="AMSModel.FK__Users__CompanyID__4316F928" FromRole="Company" ToRole="Users" />
+          <NavigationProperty Name="Users" Relationship="AMSModel.FK__Users__CompanyID__398D8EEE" FromRole="Company" ToRole="Users" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -344,7 +379,7 @@
           <Property Name="CustDescription" Type="String" MaxLength="300" Unicode="true" FixedLength="false" />
           <Property Name="CustPhone" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="CustStatus" Type="Boolean" />
-          <NavigationProperty Name="Appointments" Relationship="AMSModel.FK__Appointme__CustI__3E52440B" FromRole="Customer" ToRole="Appointments" />
+          <NavigationProperty Name="Appointments" Relationship="AMSModel.FK__Appointme__CustI__34C8D9D1" FromRole="Customer" ToRole="Appointments" />
         </EntityType>
         <EntityType Name="DayPreference">
           <Key>
@@ -354,13 +389,16 @@
           <Property Name="UserPrefID" Type="Int32" Nullable="false" />
           <Property Name="Day" Type="String" Nullable="false" MaxLength="3" Unicode="true" FixedLength="false" />
           <Property Name="Status" Type="Boolean" />
-          <NavigationProperty Name="AppointmentAvails" Relationship="AMSModel.FK__Appointme__DayPr__3D5E1FD2" FromRole="DayPreferences" ToRole="AppointmentAvail" />
-          <NavigationProperty Name="UserPreference" Relationship="AMSModel.FK__DayPrefer__UserP__403A8C7D" FromRole="DayPreferences" ToRole="UserPreferences" />
-          <NavigationProperty Name="TimePreferences" Relationship="AMSModel.FK__TimePrefe__DayPr__412EB0B6" FromRole="DayPreferences" ToRole="TimePreferences" />
+          <NavigationProperty Name="AppointmentAvails" Relationship="AMSModel.FK__Appointme__DayPr__33D4B598" FromRole="DayPreferences" ToRole="AppointmentAvail" />
+          <NavigationProperty Name="UserPreference" Relationship="AMSModel.FK__DayPrefer__UserP__36B12243" FromRole="DayPreferences" ToRole="UserPreferences" />
+          <NavigationProperty Name="TimePreferences" Relationship="AMSModel.FK__TimePrefe__DayPr__37A5467C" FromRole="DayPreferences" ToRole="TimePreferences" />
         </EntityType>
         <EntityType Name="ErrorLog">
           <Key>
             <PropertyRef Name="ErrorID" />
+            <PropertyRef Name="Message" />
+            <PropertyRef Name="TableName" />
+            <PropertyRef Name="Action" />
           </Key>
           <Property Name="ErrorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Message" Type="String" Nullable="false" MaxLength="300" Unicode="true" FixedLength="false" />
@@ -376,7 +414,7 @@
           <Property Name="TimeFrom" Type="Time" Nullable="false" />
           <Property Name="TimeTo" Type="Time" Nullable="false" />
           <Property Name="Status" Type="Boolean" />
-          <NavigationProperty Name="DayPreference" Relationship="AMSModel.FK__TimePrefe__DayPr__412EB0B6" FromRole="TimePreferences" ToRole="DayPreferences" />
+          <NavigationProperty Name="DayPreference" Relationship="AMSModel.FK__TimePrefe__DayPr__37A5467C" FromRole="TimePreferences" ToRole="DayPreferences" />
         </EntityType>
         <EntityType Name="UserPreference">
           <Key>
@@ -387,8 +425,8 @@
           <Property Name="BookingDays" Type="Int32" Nullable="false" />
           <Property Name="SlotDuration" Type="Int32" Nullable="false" />
           <Property Name="Status" Type="Boolean" />
-          <NavigationProperty Name="DayPreferences" Relationship="AMSModel.FK__DayPrefer__UserP__403A8C7D" FromRole="UserPreferences" ToRole="DayPreferences" />
-          <NavigationProperty Name="User" Relationship="AMSModel.FK__UserPrefe__UserI__4222D4EF" FromRole="UserPreferences" ToRole="Users" />
+          <NavigationProperty Name="DayPreferences" Relationship="AMSModel.FK__DayPrefer__UserP__36B12243" FromRole="UserPreferences" ToRole="DayPreferences" />
+          <NavigationProperty Name="User" Relationship="AMSModel.FK__UserPrefe__UserI__38996AB5" FromRole="UserPreferences" ToRole="Users" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -404,11 +442,11 @@
           <Property Name="UserPhone" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="UserStatus" Type="Boolean" />
           <Property Name="CompanyID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Appointments" Relationship="AMSModel.FK__Appointme__UserI__3F466844" FromRole="Users" ToRole="Appointments" />
-          <NavigationProperty Name="Company" Relationship="AMSModel.FK__Users__CompanyID__4316F928" FromRole="Users" ToRole="Company" />
-          <NavigationProperty Name="UserPreferences" Relationship="AMSModel.FK__UserPrefe__UserI__4222D4EF" FromRole="Users" ToRole="UserPreferences" />
+          <NavigationProperty Name="Appointments" Relationship="AMSModel.FK__Appointme__UserI__35BCFE0A" FromRole="Users" ToRole="Appointments" />
+          <NavigationProperty Name="Company" Relationship="AMSModel.FK__Users__CompanyID__398D8EEE" FromRole="Users" ToRole="Company" />
+          <NavigationProperty Name="UserPreferences" Relationship="AMSModel.FK__UserPrefe__UserI__38996AB5" FromRole="Users" ToRole="UserPreferences" />
         </EntityType>
-        <Association Name="FK__Appointme__DayPr__3D5E1FD2">
+        <Association Name="FK__Appointme__DayPr__33D4B598">
           <End Role="DayPreferences" Type="AMSModel.DayPreference" Multiplicity="1" />
           <End Role="AppointmentAvail" Type="AMSModel.AppointmentAvail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -420,7 +458,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Appointme__CustI__3E52440B">
+        <Association Name="FK__Appointme__CustI__34C8D9D1">
           <End Role="Customer" Type="AMSModel.Customer" Multiplicity="1" />
           <End Role="Appointments" Type="AMSModel.Appointment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -432,7 +470,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Appointme__UserI__3F466844">
+        <Association Name="FK__Appointme__UserI__35BCFE0A">
           <End Role="Users" Type="AMSModel.User" Multiplicity="1" />
           <End Role="Appointments" Type="AMSModel.Appointment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -444,7 +482,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Users__CompanyID__4316F928">
+        <Association Name="FK__Users__CompanyID__398D8EEE">
           <End Role="Company" Type="AMSModel.Company" Multiplicity="1" />
           <End Role="Users" Type="AMSModel.User" Multiplicity="*" />
           <ReferentialConstraint>
@@ -456,7 +494,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DayPrefer__UserP__403A8C7D">
+        <Association Name="FK__DayPrefer__UserP__36B12243">
           <End Role="UserPreferences" Type="AMSModel.UserPreference" Multiplicity="1" />
           <End Role="DayPreferences" Type="AMSModel.DayPreference" Multiplicity="*" />
           <ReferentialConstraint>
@@ -468,7 +506,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TimePrefe__DayPr__412EB0B6">
+        <Association Name="FK__TimePrefe__DayPr__37A5467C">
           <End Role="DayPreferences" Type="AMSModel.DayPreference" Multiplicity="1" />
           <End Role="TimePreferences" Type="AMSModel.TimePreference" Multiplicity="*" />
           <ReferentialConstraint>
@@ -480,7 +518,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UserPrefe__UserI__4222D4EF">
+        <Association Name="FK__UserPrefe__UserI__38996AB5">
           <End Role="Users" Type="AMSModel.User" Multiplicity="1" />
           <End Role="UserPreferences" Type="AMSModel.UserPreference" Multiplicity="*" />
           <ReferentialConstraint>
@@ -634,11 +672,12 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="AMS" ZoomLevel="64">
+      <Diagram Name="AMSEntities">
         <EntityTypeShape EntityType="AMSModel.ActivityLog" Width="1.5" PointX="5.75" PointY="1.375" Height="2.1725878906249996" IsExpanded="true" />
         <EntityTypeShape EntityType="AMSModel.AppointmentAvail" Width="1.5" PointX="9.75" PointY="7.375" Height="1.9802864583333335" IsExpanded="true" />
         <EntityTypeShape EntityType="AMSModel.Appointment" Width="1.5" PointX="5.25" PointY="4.625" Height="2.9417936197916656" IsExpanded="true" />
@@ -649,32 +688,32 @@
         <EntityTypeShape EntityType="AMSModel.TimePreference" Width="1.5" PointX="9.75" PointY="10.125" Height="2.1725878906249996" IsExpanded="true" />
         <EntityTypeShape EntityType="AMSModel.UserPreference" Width="1.5" PointX="5.25" PointY="8.625" Height="2.3648893229166674" IsExpanded="true" />
         <EntityTypeShape EntityType="AMSModel.User" Width="1.5" PointX="3" PointY="4.375" Height="3.5186979166666674" IsExpanded="true" />
-        <AssociationConnector Association="AMSModel.FK__Appointme__DayPr__3D5E1FD2" ManuallyRouted="false">
+        <AssociationConnector Association="AMSModel.FK__Appointme__DayPr__33D4B598" ManuallyRouted="false">
           <ConnectorPoint PointX="9" PointY="8.9901432291666659" />
           <ConnectorPoint PointX="9.75" PointY="8.9901432291666659" />
         </AssociationConnector>
-        <AssociationConnector Association="AMSModel.FK__Appointme__CustI__3E52440B" ManuallyRouted="false">
+        <AssociationConnector Association="AMSModel.FK__Appointme__CustI__34C8D9D1" ManuallyRouted="false">
           <ConnectorPoint PointX="4.5" PointY="1.03125" />
           <ConnectorPoint PointX="5.46875" PointY="1.03125" />
           <ConnectorPoint PointX="5.46875" PointY="4.625" />
         </AssociationConnector>
-        <AssociationConnector Association="AMSModel.FK__Appointme__UserI__3F466844" ManuallyRouted="false">
+        <AssociationConnector Association="AMSModel.FK__Appointme__UserI__35BCFE0A" ManuallyRouted="false">
           <ConnectorPoint PointX="4.5" PointY="6.0958968098958328" />
           <ConnectorPoint PointX="5.25" PointY="6.0958968098958328" />
         </AssociationConnector>
-        <AssociationConnector Association="AMSModel.FK__Users__CompanyID__4316F928" ManuallyRouted="false">
+        <AssociationConnector Association="AMSModel.FK__Users__CompanyID__398D8EEE" ManuallyRouted="false">
           <ConnectorPoint PointX="2.25" PointY="6.1824446614583328" />
           <ConnectorPoint PointX="3" PointY="6.1824446614583328" />
         </AssociationConnector>
-        <AssociationConnector Association="AMSModel.FK__DayPrefer__UserP__403A8C7D" ManuallyRouted="false">
+        <AssociationConnector Association="AMSModel.FK__DayPrefer__UserP__36B12243" ManuallyRouted="false">
           <ConnectorPoint PointX="6.75" PointY="9.8074446614583337" />
           <ConnectorPoint PointX="7.5" PointY="9.8074446614583337" />
         </AssociationConnector>
-        <AssociationConnector Association="AMSModel.FK__TimePrefe__DayPr__412EB0B6" ManuallyRouted="false">
+        <AssociationConnector Association="AMSModel.FK__TimePrefe__DayPr__37A5467C" ManuallyRouted="false">
           <ConnectorPoint PointX="9" PointY="10.557444661458334" />
           <ConnectorPoint PointX="9.75" PointY="10.557444661458334" />
         </AssociationConnector>
-        <AssociationConnector Association="AMSModel.FK__UserPrefe__UserI__4222D4EF" ManuallyRouted="false">
+        <AssociationConnector Association="AMSModel.FK__UserPrefe__UserI__38996AB5" ManuallyRouted="false">
           <ConnectorPoint PointX="3.75" PointY="7.8936979166666674" />
           <ConnectorPoint PointX="3.75" PointY="9.8074446614583337" />
           <ConnectorPoint PointX="5.25" PointY="9.8074446614583337" />

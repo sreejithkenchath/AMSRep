@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AMS.Repositories;
 using WebMatrix.WebData;
 using System.Web.Security;
 using System.Transactions;
@@ -13,6 +14,15 @@ namespace AMS.AMS_BLL
     {
         private string Message;
         private bool IsValid;
+        protected IRepository DataStore { get; set; }
+        protected string[] Includes { get; set; }
+
+        public UserBLL()
+        {
+            //TODO: USE DEPENDENCY INJECTION FOR DECOUPLING
+            this.DataStore = new EFRepository();
+        }
+
         public string AddNewUser(FormCollection collection,User user)
         {
             Message = null;
@@ -35,8 +45,10 @@ namespace AMS.AMS_BLL
                     WebSecurity.CreateUserAndAccount(uname, paswd);
                     Roles.AddUserToRole(uname, "User");
                     user.MembershipUserID = WebSecurity.GetUserId(uname);
-                    ae.Users.AddObject(user);
-                    ae.SaveChanges();
+                    //ae.Users.AddObject(user);
+                    //ae.SaveChanges();
+                    DataStore.Create(user);
+                    DataStore.SaveChanges();
                     Emailer.Send(user.UserEmail, "Welcome to AMS", "Please reset your password");
                     t.Complete();
                 };

@@ -38,7 +38,8 @@ namespace AMS.Controllers
             if (ModelState.IsValid)
             {
                 db.Companies.Attach(company);
-                db.ObjectStateManager.ChangeObjectState(company, EntityState.Modified);
+               // db.ObjectStateManager.ChangeObjectState(company, EntityState.Modified);
+                // TODO: BLL code
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -64,7 +65,8 @@ namespace AMS.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Company company = db.Companies.Single(c => c.CompanyID == id);
-            db.Companies.DeleteObject(company);
+            //db.Companies.DeleteObject(company);
+            //TODO: BLL CODE
             db.SaveChanges();
             return RedirectToAction("Index");
         }

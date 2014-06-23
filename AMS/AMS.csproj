@@ -161,26 +161,59 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActivityLog.cs">
+      <DependentUpon>AMSContextModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="AMS BLL\CompanyBLL.cs" />
     <Compile Include="AMS BLL\UserBLL.cs" />
-    <Compile Include="AMS.Designer.cs">
+    <Compile Include="AMSContextModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AMS.edmx</DependentUpon>
+      <DependentUpon>AMSContextModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AMSContextModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AMSContextModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AMSEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AMSEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Appointment.cs">
+      <DependentUpon>AMSContextModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppointmentAvail.cs">
+      <DependentUpon>AMSContextModel.tt</DependentUpon>
     </Compile>
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Company.cs">
+      <DependentUpon>AMSContextModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Customer.cs">
+      <DependentUpon>AMSContextModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DayPreference.cs">
+      <DependentUpon>AMSContextModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFRepository.cs" />
+    <Compile Include="ErrorLog.cs">
+      <DependentUpon>AMSContextModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="IRepository.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -189,6 +222,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MyUsers.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TimePreference.cs">
+      <DependentUpon>AMSContextModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>AMSContextModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserPreference.cs">
+      <DependentUpon>AMSContextModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Utility\Emailer.cs" />
   </ItemGroup>
@@ -341,10 +383,18 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="AMS.edmx">
+    <EntityDeploy Include="AMSEntities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>AMS.Designer.cs</LastGenOutput>
+      <LastGenOutput>AMSEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="AMSContextModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AMSContextModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="AMSContextModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AMSContextModel.cs</LastGenOutput>
+    </None>
     <None Include="Content\fonts\.DS_Store" />
     <None Include="Content\fonts\codropsicons\.DS_Store" />
     <None Include="Content\fonts\codropsicons\codropsicons.eot" />
@@ -365,6 +415,7 @@
     <Content Include="Views\User\AddNewUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
