@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Services;
 using AMS.Repositories;
 using WebMatrix.WebData;
 using System.Web.Security;
@@ -34,8 +33,8 @@ namespace AMS.AMS_BLL
          //   if (emailcheck != null)
          //       SetError("Email Id already Exists");
 
-            //User uu=ae.Users.Where(e => e.MembershipUserID == WebSecurity.CurrentUserId).Single();
-            User uu = DataStore.Get<User>(e => e.MembershipUserID == WebSecurity.CurrentUserId);
+              User uu=ae.Users.Where(e => e.MembershipUserID == WebSecurity.CurrentUserId).Single();
+            
             String uname = collection.Get("UserName");
             String paswd=collection.Get("Password");
             user.CompanyID = uu.CompanyID;
@@ -66,21 +65,6 @@ namespace AMS.AMS_BLL
         {
             IsValid = false;
             Message += message;
-        }
-
-        public List<User> GetUsersForCompany(int p)
-        {
-            return DataStore.Filter<User>(e => e.CompanyID == p).ToList();
-        }
-
-        public User GetUserbyId(int p)
-        {
-           return DataStore.Get<User>(e => e.MembershipUserID == p);
-        }
-
-        internal List<User> getUsers()
-        {
-            return DataStore.All<User>().ToList();
         }
     }
 }

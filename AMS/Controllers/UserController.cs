@@ -12,32 +12,23 @@ namespace AMS.Controllers
 {
     public class UserController : Controller
     {
-         String message;
-        protected UserBLL userBll;
-        public UserController()
-        {
-            userBll = new UserBLL();
-        }
-
+        String message;
          public ActionResult Index()
         {
             message = "";
             AMSEntities ae = new AMSEntities();
-            User user = userBll.GetUserbyId(WebSecurity.CurrentUserId);
-            //User uu = ae.Users.Where(e => e.MembershipUserID == WebSecurity.CurrentUserId).Single();
-            //List<User> users = ae.Users.Where(e => e.CompanyID==uu.CompanyID).ToList();
-            List<User> users = userBll.GetUsersForCompany(user.CompanyID);
+            User uu = ae.Users.Where(e => e.MembershipUserID == WebSecurity.CurrentUserId).Single();
+            List<User> users = ae.Users.Where(e => e.CompanyID==uu.CompanyID).ToList();
             //ViewBag["Message"] = message;
             return View(users);
         }
 
          public ActionResult ExportUsersList()
          {
-             //AMSEntities ae = new AMSEntities();
-             //User uu = ae.Users.Where(e => e.MembershipUserID == WebSecurity.CurrentUserId).Single();
-             //List<User> users = ae.Users.Where(e => e.CompanyID == uu.CompanyID).ToList();
-             User user = userBll.GetUserbyId(WebSecurity.CurrentUserId);
-             List<User> users = userBll.GetUsersForCompany(user.CompanyID);
+             AMSEntities ae = new AMSEntities();
+             User uu = ae.Users.Where(e => e.MembershipUserID == WebSecurity.CurrentUserId).Single();
+             List<User> users = ae.Users.Where(e => e.CompanyID == uu.CompanyID).ToList();
+
              var d =(from s in users
                      select new
                      {

@@ -166,7 +166,6 @@
     </Compile>
     <Compile Include="AMS BLL\CompanyBLL.cs" />
     <Compile Include="AMS BLL\UserBLL.cs" />
-    <Compile Include="AMSBLLFacade.cs" />
     <Compile Include="AMSContextModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -215,7 +214,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="IRepository.cs" />
-    <Compile Include="IUserBLLFacade.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
