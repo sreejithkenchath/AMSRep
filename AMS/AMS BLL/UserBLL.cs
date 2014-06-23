@@ -77,5 +77,10 @@ namespace AMS.AMS_BLL
         {
            return DataStore.Get<User>(e => e.MembershipUserID == p);
         }
+
+        internal List<User> getUsers()
+        {
+            return DataStore.All<User>().ToList();
+        }
     }
 }
