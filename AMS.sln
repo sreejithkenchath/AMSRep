@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AMSDataContracts", "AMSData
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AMSServiceContracts", "AMSServiceContracts\AMSServiceContracts.csproj", "{FFB997EE-9978-44EB-8664-905B7E65C73A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppointmentService", "AppointmentService\AppointmentService.csproj", "{CAD0D248-DBB9-44AE-B54A-4EB02DF49A83}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,10 @@ Global
 		{FFB997EE-9978-44EB-8664-905B7E65C73A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFB997EE-9978-44EB-8664-905B7E65C73A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FFB997EE-9978-44EB-8664-905B7E65C73A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAD0D248-DBB9-44AE-B54A-4EB02DF49A83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAD0D248-DBB9-44AE-B54A-4EB02DF49A83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAD0D248-DBB9-44AE-B54A-4EB02DF49A83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAD0D248-DBB9-44AE-B54A-4EB02DF49A83}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,5 +70,6 @@ Global
 		{8618EB94-3678-4C0D-9E14-05FB7C2F38A8} = {17E653EE-6D9A-4D24-9E81-6432063F2F87}
 		{FFB997EE-9978-44EB-8664-905B7E65C73A} = {17E653EE-6D9A-4D24-9E81-6432063F2F87}
 		{3EEE0965-2165-438A-9BE0-FBE96747C571} = {B764EC48-6C52-4949-9E13-56652D7965F8}
+		{CAD0D248-DBB9-44AE-B54A-4EB02DF49A83} = {B764EC48-6C52-4949-9E13-56652D7965F8}
 	EndGlobalSection
 EndGlobal
