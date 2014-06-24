@@ -1,0 +1,68 @@
+﻿@model IEnumerable<AMS.Models.AppointmentList>
+
+
+@{
+    ViewBag.Title = "Appointment Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="sidemenu_head" style="font-size:20px;font-weight:bold;">Appointment Details</div>
+                            <div class="sidemenu">
+
+<h2>Index</h2>
+
+
+
+<table cellpadding="10" cellspacing="10">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AppointmentNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TimeFrom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TimeTo)
+        </th>
+        <th>
+          @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+         @Html.DisplayNameFor(model => model.CustomerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AppointmentNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TimeFrom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TimeTo)
+        </td>
+       <td>
+       @Html.DisplayFor(model => item.UserName)
+       </td>
+       <td>
+        @Html.DisplayFor(model => item.CustomerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        
+    </tr>
+}
+
+</table>
