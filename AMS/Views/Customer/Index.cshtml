@@ -1,18 +1,29 @@
 ﻿@model AMS.Customer
 
 @{
-
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-    
+    ViewBag.Title = "Index";    
 }
 
-<h2>Index</h2>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm("Index", "Customer"))
+{
+    <div class="sidemenu_head" style="font-size:20px;font-weight:bold;">Customer Registration</div>
+    <div class="sidemenu">
+    
     @Html.ValidationSummary(true)
 
     <fieldset>
+   
+    @Html.AntiForgeryToken()
+
+        @if (ViewBag.Message != null)
+        {
+            <div style="border:solid 2px green">
+                @ViewBag.Message
+            
+            
+            </div>
+        }
     <div class="editor-label">
             UserName : 
         </div>
@@ -32,12 +43,9 @@
         <div class="editor-field">
             <input id="txtrePassword" name="ReTypePassword" type="password" />
         </div>
-        <legend>Customer</legend>
-
-        
-
         <div class="editor-label">
-            @Html.LabelFor(model => model.CustFirstName)
+        @* First Name:*@
+                @Html.LabelFor(model => model.CustFirstName)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.CustFirstName)
@@ -45,6 +53,7 @@
         </div>
 
         <div class="editor-label">
+        @*Last Name:*@
             @Html.LabelFor(model => model.CustLastName)
         </div>
         <div class="editor-field">
@@ -53,14 +62,17 @@
         </div>
 
         <div class="editor-label">
+       @* Email:*@
             @Html.LabelFor(model => model.CustEmail)
         </div>
         <div class="editor-field">
+        
             @Html.EditorFor(model => model.CustEmail)
             @Html.ValidationMessageFor(model => model.CustEmail)
         </div>
 
         <div class="editor-label">
+        @*Description:*@
             @Html.LabelFor(model => model.CustDescription)
         </div>
         <div class="editor-field">
@@ -69,26 +81,26 @@
         </div>
 
         <div class="editor-label">
+        @*Phone Number:*@
             @Html.LabelFor(model => model.CustPhone)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.CustPhone)
             @Html.ValidationMessageFor(model => model.CustPhone)
         </div>
-
-       
-        
-
+ 
         <p>
             <input type="submit" value="Create" />
         </p>
     </fieldset>
+
+     @section Scripts
+ {
+    @Scripts.Render("~/bundles/jqueryval")
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to Login", "Login", "Account")
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+</div>
 }

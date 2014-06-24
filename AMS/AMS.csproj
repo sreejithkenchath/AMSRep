@@ -420,7 +420,6 @@
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\AddNewUser.cshtml" />
     <EntityDeploy Include="AMSEntities.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>AMSEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="obj\Debug\edmxResourcesToEmbed\AMS.csdl" />
@@ -430,6 +429,9 @@
     <None Include="obj\Debug\edmxResourcesToEmbed\AMSEntities.msl" />
     <None Include="obj\Debug\edmxResourcesToEmbed\AMSEntities.ssdl" />
     <None Include="obj\Release\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="Views\User\Create.cshtml" />
+    <Content Include="Views\User\Delete.cshtml" />
+    <Content Include="Views\User\Details.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Customer\Message.cshtml" />
     <Content Include="Views\Appointment\Preferences.cshtml" />

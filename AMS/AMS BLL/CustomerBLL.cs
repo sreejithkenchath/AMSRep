@@ -7,7 +7,7 @@ using WebMatrix.WebData;
 using System.Web.Security;
 using System.Transactions;
 using AMS.Repositories;
-
+using AMS.Models;
 
 
 namespace AMS.AMS_BLL
@@ -15,7 +15,7 @@ namespace AMS.AMS_BLL
     public class CustomerBLL
     {
         private string Message;
-        
+        //private bool IsValid;
         protected IRepository DataStore { get; set; }
         protected string[] Includes { get; set; }
 
@@ -24,23 +24,35 @@ namespace AMS.AMS_BLL
             //TODO: USE DEPENDENCY INJECTION FOR DECOUPLING
             this.DataStore = new EFRepository();
         }
-       
+
         public string AddCustomer(FormCollection collection, Customer c)
         {
             Message = null;
+            //IsValid=true;
             AMSEntities ae = new AMSEntities();
             string uname = collection.Get("UserName");
             string pwd = collection.Get("Password");
             string repwd = collection.Get("ReTypePassword");
+
+
+            //var query= DataStore.Get<UserProfile>(b => b.UserName == uname);
+            if (WebSecurity.UserExists(uname))
+            {
+                SetError("User Already exsist");
+            }
+
+
             if (pwd == repwd)
             {
+
                 using (TransactionScope ts = new TransactionScope())
                 {
+
                     WebSecurity.CreateUserAndAccount(uname, pwd);
                     Roles.AddUserToRole(uname, "Customer");
                     c.MembershipUserID = WebSecurity.GetUserId(uname);
                     c.CustStatus = true;
-                    
+
                     DataStore.Create(c);
                     DataStore.SaveChanges();
                     Emailer.Send(c.CustEmail, "Registration confirmed", "Welcome to AMS");
@@ -52,9 +64,22 @@ namespace AMS.AMS_BLL
             }
             else
             {
+
                 return Message;
             }
 
+
+        }
+
+
+
+        public void SetError(string message)
+        {
+
+            Message += message;
         }
     }
 }
+
+        
+    

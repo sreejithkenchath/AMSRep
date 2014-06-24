@@ -3,15 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace AMS.Models
 {
     [MetadataType(typeof(CustomerMetadata))]
-    public class Customer
+    public partial class Customer
     {
     }
     public class CustomerMetadata
     {
+        [DataType(System.ComponentModel.DataAnnotations.DataType.Password)]
+        [StringLength(50, MinimumLength = 8, ErrorMessage = "Password must be 8 char long.")]
+        public string Password { get; set; }
+       
+        [Compare("Password", ErrorMessage = "Confirm password dose not match.")]
+        [DataType(System.ComponentModel.DataAnnotations.DataType.Password)]
+        public string ConfirmPassword { get; set; }
+
         [Display(Name = "First Name")]
         [Required(ErrorMessage = "First name is mandatory")]
         public String CustFirstName { get; set; }

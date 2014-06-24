@@ -25,6 +25,7 @@
         <div class="row">
             <div class="col-md-3"></div>
             <section id="LoginForm">
+            
             @using (Html.BeginForm("Login", "Account", FormMethod.Post))
             {
     @Html.AntiForgeryToken()
@@ -76,8 +77,8 @@
                 </div>
 
                     <div class="new_reg_panel">
-                        
-                        <p>@Html.ActionLink("Click Here for New Registration", "Index","Customer")</p>
+                    
+                        <p>@Html.ActionLink("Click Here", "Index", "Customer") for New Registration</p>
                     </div>
 
 

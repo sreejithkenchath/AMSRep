@@ -20,14 +20,29 @@ namespace AMS.Controllers
             Response.Redirect("Index.cshtml");
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         [AllowAnonymous]
         public ActionResult Index(FormCollection collection, Customer c)
         {
-            CustomerBLL cb = new CustomerBLL();
-            string message = cb.AddCustomer(collection, c);
-            return View(message);
+           
+                CustomerBLL cb = new CustomerBLL();
+                string message = cb.AddCustomer(collection, c);
+                if (message == null)
+                {
+                    ViewBag.Message = "Password Mismatch";
+                    return View(c);
+                }
+                else
+                {
+
+                    //ViewData["Result"] = message;
+                    //return View("Result");
+                    return RedirectToAction("Login", "Account");
+                }
+          
             
         }
+       
             
         }
 
