@@ -12,9 +12,7 @@ namespace AMS.Controllers
 {
     public class CompanyController : Controller
     {
-        private AMSEntities db = new AMSEntities();
-
-        
+               
         public ActionResult Index()
         {
             CompanyBLL cb = new CompanyBLL();
@@ -37,10 +35,12 @@ namespace AMS.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Companies.Attach(company);
+                CompanyBLL cb = new CompanyBLL();
+                cb.EditCompany(company);
+                //.Companies.Attach(company);
                // db.ObjectStateManager.ChangeObjectState(company, EntityState.Modified);
                 // TODO: BLL code
-                db.SaveChanges();
+                //db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(company);
@@ -48,33 +48,12 @@ namespace AMS.Controllers
 
          // GET: /Company/Delete/5
 
-        public ActionResult Delete(int id = 0)
-        {
-            Company company = db.Companies.Single(c => c.CompanyID == id);
-            if (company == null)
-            {
-                return HttpNotFound();
-            }
-            return View(company);
-        }
+        
 
         //
         // POST: /Company/Delete/5
 
-        [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Company company = db.Companies.Single(c => c.CompanyID == id);
-            //db.Companies.DeleteObject(company);
-            //TODO: BLL CODE
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            db.Dispose();
-            base.Dispose(disposing);
-        }
+        
+      
     }
 }

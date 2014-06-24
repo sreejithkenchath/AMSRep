@@ -82,5 +82,10 @@ namespace AMS.AMS_BLL
         {
             return DataStore.All<User>().ToList();
         }
+
+        internal void EditUser(User user)
+        {
+            DataStore.Update<User>(user);
+        }
     }
 }

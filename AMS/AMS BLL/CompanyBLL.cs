@@ -30,9 +30,9 @@ namespace AMS.AMS_BLL
         //  return u.CompanyID;
         //}
 
-        public void EditCompany()
+        public void EditCompany(Company company)
         {
-
+            DataStore.Update<Company>(company);
         }
     }
 }

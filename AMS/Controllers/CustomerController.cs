@@ -14,9 +14,10 @@ namespace AMS.Controllers
         //
         // GET: /Customer/
 
-        public ActionResult Index()
-        {   
-            return View();
+        [AllowAnonymous]
+        public void  Index()
+        {
+            Response.Redirect("Index.cshtml");
         }
         [HttpPost]
         [AllowAnonymous]

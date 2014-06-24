@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using AMSDataContracts;
+using AMS.Models;
 using AMS;
 
 namespace AMSEntityAdapters
@@ -18,6 +19,7 @@ namespace AMSEntityAdapters
         public UserDTO ConvertEntitytoDTO(User user)
         {
             UserDTO userdto = new UserDTO();
+            
             userdto.UserId = user.MembershipUserID;
             userdto.FirstName = user.UserFirstName;
             userdto.LastName = user.UserLastName;

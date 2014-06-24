@@ -4,35 +4,34 @@
     ViewBag.Title = "Add New User";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+   <div class="sidemenu_head" style="font-size:20px;font-weight:bold;">Add new user</div>
+      
 @using (Html.BeginForm("AddUser", "User"))
 {
-    <div class="sidemenu_head" style="font-size:20px;font-weight:bold;">Add new user</div>
-                            <div class="sidemenu">
+ 
     @Html.ValidationSummary(true)
 
     <fieldset>
-       <div class="editor-label">
-            UserName : 
-        </div>
-        <div class="editor-field">
-        <input id="txtUserName" name="UserName" type="text" />
-        </div>
-
-        <div class="editor-label">
-            Password : 
-        </div>
-        <div class="editor-field">
+    <br />
+<div class="form-group" >
+             <label>Username:</label>  
+        <div>
+             <input id="txtUserName" name="UserName" type="text" />
+             </div>
+ 
+         <label>Password : </label>
+          <div>
             <input id="txtPassword" name="Password" type="password" />
         </div>
-        
-        <div class="editor-label">
+            
+        <div >
             @Html.LabelFor(model => model.UserFirstName)
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UserFirstName)
+        <div >
+            @Html.EditorFor(model => model.UserFirstName, new { @class = "form-control", style = "width: 30%;" })
             @Html.ValidationMessageFor(model => model.UserFirstName)
-        </div>
+         </div>
+        
 
         <div class="editor-label">
             @Html.LabelFor(model => model.UserLastName)
@@ -79,20 +78,13 @@
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.UserStatus)
-            @Html.ValidationMessageFor(model => model.UserStatus)
+            <div class="bg-warning" >@Html.ValidationMessageFor(model => model.UserStatus)</div>
         </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.CompanyID)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.CompanyID)
-            @Html.ValidationMessageFor(model => model.CompanyID)
-        </div>
-
+<br />
         <p>
-            <input type="submit" value="Create" />
+            <input class="btn btn-primary btn-xs"  type="submit" value="Create" />
         </p>
+        </div>
     </fieldset>
 
     @section Scripts 
@@ -102,5 +94,5 @@
 <div>
     @Html.ActionLink("Back to Users List","Index","User")
 </div>
-</div>
+    
 }

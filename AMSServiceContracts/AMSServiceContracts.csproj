@@ -52,6 +52,10 @@
       <Project>{8618EB94-3678-4C0D-9E14-05FB7C2F38A8}</Project>
       <Name>AMSDataContracts</Name>
     </ProjectReference>
+    <ProjectReference Include="..\AMS\AMS.csproj">
+      <Project>{28D3333C-E478-4088-82CC-6972410F5E66}</Project>
+      <Name>AMS</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

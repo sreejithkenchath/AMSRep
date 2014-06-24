@@ -7,14 +7,12 @@
 }
 @using (Html.BeginForm("AddUser", "User"))
 {
-<div class="sidemenu_head" style="font-size:20px;font-weight:bold;">Users
-
-</div>
+<div class="sidemenu_head" style="font-size:20px;font-weight:bold;">Users</div>
     @Html.ActionLink("Create New", "AddUser")
     <div><a href="@Url.Action("ExportUsersList")">Export to PDF</a></div>
 <div class="sidemenu" >
 <p>@ViewBag.message</p>
-<table>
+<table class="table">
     <tr>
         <th>
             User
@@ -54,8 +52,8 @@
             @Html.DisplayFor(modelItem => item.UserStatus)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.UserID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.UserID })
+            @Html.ActionLink("Edit", "Edit", item) |
+            @Html.ActionLink("Delete", "Delete", item)
         </td>
     </tr>
 }

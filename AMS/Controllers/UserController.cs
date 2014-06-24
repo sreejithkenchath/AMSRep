@@ -78,5 +78,28 @@ namespace AMS.Controllers
              
              Index();
         }
+        public ActionResult Edit(User user)
+        {
+            return View("Edit",user);
+        }
+
+        [HttpPost]
+        public ActionResult  EditUser(User user)
+        {
+            UserBLL ub = new UserBLL();
+            ub.EditUser(user);
+            AMSEntities ae = new AMSEntities();
+            User uu = ae.Users.Where(e => e.MembershipUserID == WebSecurity.CurrentUserId).Single();
+            List<User> users = ae.Users.Where(e => e.CompanyID==uu.CompanyID).ToList();
+            return View("Index", users);
+        }
+
+        public ActionResult Delete(User user)
+        {
+            return View();
+        }
+
+
+
     }
 }

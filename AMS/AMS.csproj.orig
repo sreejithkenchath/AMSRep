@@ -35,9 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -161,16 +161,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AMSBLLFacade\AMSBLLFacade.cs" />
+    <Compile Include="AMSBLLFacade\IUserBLLFacade.cs" />
+    <Compile Include="AMS BLL\CompanyBLL.cs" />
+    <Compile Include="AMS BLL\CustomerBLL.cs" />
+    <Compile Include="AMS BLL\UserBLL.cs" />
 <<<<<<< HEAD
-    <Compile Include="ActivityLog.cs">
-      <DependentUpon>AMSContextModel.tt</DependentUpon>
-    </Compile>
 =======
     <Compile Include="AMSBLLFacade\AMSBLLFacade.cs" />
     <Compile Include="AMSBLLFacade\IUserBLLFacade.cs" />
->>>>>>> Business Facade and service layer
-    <Compile Include="AMS BLL\CompanyBLL.cs" />
-    <Compile Include="AMS BLL\UserBLL.cs" />
     <Compile Include="AMSContextModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -192,34 +191,36 @@
     <Compile Include="AppointmentAvail.cs">
       <DependentUpon>AMSContextModel.tt</DependentUpon>
     </Compile>
+>>>>>>> 542141f5b6dc6cb2bd4942154a92e1bd9c2a4e94
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Company.cs">
-      <DependentUpon>AMSContextModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+<<<<<<< HEAD
+    <Compile Include="EFRepository.cs" />
+=======
     <Compile Include="Customer.cs">
       <DependentUpon>AMSContextModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DayPreference.cs">
       <DependentUpon>AMSContextModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EFRepository.cs" />
     <Compile Include="ErrorLog.cs">
       <DependentUpon>AMSContextModel.tt</DependentUpon>
     </Compile>
+>>>>>>> 542141f5b6dc6cb2bd4942154a92e1bd9c2a4e94
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="IRepository.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reports\MyUsers.cs">
@@ -228,6 +229,10 @@
       <DependentUpon>MyUsers.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+<<<<<<< HEAD
+=======
+    <Compile Include="Repositories\EFRepository.cs" />
+    <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="TimePreference.cs">
       <DependentUpon>AMSContextModel.tt</DependentUpon>
     </Compile>
@@ -237,7 +242,13 @@
     <Compile Include="UserPreference.cs">
       <DependentUpon>AMSContextModel.tt</DependentUpon>
     </Compile>
+>>>>>>> 542141f5b6dc6cb2bd4942154a92e1bd9c2a4e94
     <Compile Include="Utility\Emailer.cs" />
+    <Compile Include="AMSEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AMSEntities.edmx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\bizcare.css" />
@@ -324,6 +335,12 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="obj\Debug\AMS.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\AMS.dll" />
+    <Content Include="obj\Debug\AMS.pdb" />
+    <Content Include="obj\Debug\TempPE\AMS.Designer.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Reports.MyUsers.cs.dll" />
+    <Content Include="obj\Release\TempPE\AMS.Designer.cs.dll" />
     <Content Include="Scripts\jquery-1.7.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
@@ -379,7 +396,9 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -388,18 +407,6 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="AMSEntities.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>AMSEntities.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="AMSContextModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>AMSContextModel.Context.cs</LastGenOutput>
-    </None>
-    <None Include="AMSContextModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>AMSContextModel.cs</LastGenOutput>
-    </None>
     <None Include="Content\fonts\.DS_Store" />
     <None Include="Content\fonts\codropsicons\.DS_Store" />
     <None Include="Content\fonts\codropsicons\codropsicons.eot" />
@@ -418,9 +425,26 @@
     <Content Include="Views\User\AddUser.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\AddNewUser.cshtml" />
+<<<<<<< HEAD
+    <EntityDeploy Include="AMSEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AMSEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+=======
+    <Content Include="Views\Customer\Index.cshtml" />
+    <Content Include="Views\Customer\Message.cshtml" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Debug\edmxResourcesToEmbed\AMS.csdl" />
+    <None Include="obj\Debug\edmxResourcesToEmbed\AMS.msl" />
+    <None Include="obj\Debug\edmxResourcesToEmbed\AMS.ssdl" />
+    <None Include="obj\Debug\edmxResourcesToEmbed\AMSEntities.csdl" />
+    <None Include="obj\Debug\edmxResourcesToEmbed\AMSEntities.msl" />
+    <None Include="obj\Debug\edmxResourcesToEmbed\AMSEntities.ssdl" />
+    <None Include="obj\Release\DesignTimeResolveAssemblyReferencesInput.cache" />
+>>>>>>> 542141f5b6dc6cb2bd4942154a92e1bd9c2a4e94
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
