@@ -1,0 +1,918 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AMSModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="AMSModelStoreContainer">
+          <EntitySet Name="ActivityLog" EntityType="AMSModel.Store.ActivityLog" store:Type="Tables" store:Schema="dbo" store:Name="ActivityLog">
+            <DefiningQuery>SELECT 
+      [ActivityLog].[ActivityID] AS [ActivityID], 
+      [ActivityLog].[MembershipID] AS [MembershipID], 
+      [ActivityLog].[TableName] AS [TableName], 
+      [ActivityLog].[DateTime] AS [DateTime], 
+      [ActivityLog].[Action] AS [Action], 
+      [ActivityLog].[IPAddress] AS [IPAddress]
+      FROM [dbo].[ActivityLog] AS [ActivityLog]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="AppointmentAvail" EntityType="AMSModel.Store.AppointmentAvail" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Appointments" EntityType="AMSModel.Store.Appointments" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Company" EntityType="AMSModel.Store.Company" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Customer" EntityType="AMSModel.Store.Customer" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DayPreferences" EntityType="AMSModel.Store.DayPreferences" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ErrorLog" EntityType="AMSModel.Store.ErrorLog" store:Type="Tables" store:Schema="dbo" store:Name="ErrorLog">
+            <DefiningQuery>SELECT 
+      [ErrorLog].[ErrorID] AS [ErrorID], 
+      [ErrorLog].[Message] AS [Message], 
+      [ErrorLog].[TableName] AS [TableName], 
+      [ErrorLog].[Action] AS [Action]
+      FROM [dbo].[ErrorLog] AS [ErrorLog]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TimePreferences" EntityType="AMSModel.Store.TimePreferences" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserPreferences" EntityType="AMSModel.Store.UserPreferences" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserProfile" EntityType="AMSModel.Store.UserProfile" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Users" EntityType="AMSModel.Store.Users" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="webpages_Membership" EntityType="AMSModel.Store.webpages_Membership" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="webpages_OAuthMembership" EntityType="AMSModel.Store.webpages_OAuthMembership" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="webpages_Roles" EntityType="AMSModel.Store.webpages_Roles" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="webpages_UsersInRoles" EntityType="AMSModel.Store.webpages_UsersInRoles" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK__Appointme__CustI__3E52440B" Association="AMSModel.Store.FK__Appointme__CustI__3E52440B">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Appointments" EntitySet="Appointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Appointme__DayPr__3D5E1FD2" Association="AMSModel.Store.FK__Appointme__DayPr__3D5E1FD2">
+            <End Role="DayPreferences" EntitySet="DayPreferences" />
+            <End Role="AppointmentAvail" EntitySet="AppointmentAvail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Appointme__UserI__3F466844" Association="AMSModel.Store.FK__Appointme__UserI__3F466844">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Appointments" EntitySet="Appointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DayPrefer__UserP__403A8C7D" Association="AMSModel.Store.FK__DayPrefer__UserP__403A8C7D">
+            <End Role="UserPreferences" EntitySet="UserPreferences" />
+            <End Role="DayPreferences" EntitySet="DayPreferences" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TimePrefe__DayPr__412EB0B6" Association="AMSModel.Store.FK__TimePrefe__DayPr__412EB0B6">
+            <End Role="DayPreferences" EntitySet="DayPreferences" />
+            <End Role="TimePreferences" EntitySet="TimePreferences" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserPrefe__UserI__4222D4EF" Association="AMSModel.Store.FK__UserPrefe__UserI__4222D4EF">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserPreferences" EntitySet="UserPreferences" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Users__CompanyID__4316F928" Association="AMSModel.Store.FK__Users__CompanyID__4316F928">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="fk_RoleId" Association="AMSModel.Store.fk_RoleId">
+            <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+            <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
+          </AssociationSet>
+          <AssociationSet Name="fk_UserId" Association="AMSModel.Store.fk_UserId">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
+          </AssociationSet>
+        </EntityContainer>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'AMS.dbo.ActivityLog' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="ActivityLog">
+          <Key>
+            <PropertyRef Name="ActivityID" />
+            <PropertyRef Name="MembershipID" />
+            <PropertyRef Name="TableName" />
+            <PropertyRef Name="DateTime" />
+            <PropertyRef Name="Action" />
+            <PropertyRef Name="IPAddress" />
+          </Key>
+          <Property Name="ActivityID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MembershipID" Type="int" Nullable="false" />
+          <Property Name="TableName" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="DateTime" Type="smalldatetime" Nullable="false" />
+          <Property Name="Action" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="IPAddress" Type="nvarchar" Nullable="false" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="AppointmentAvail">
+          <Key>
+            <PropertyRef Name="AppAvailID" />
+          </Key>
+          <Property Name="AppAvailID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DayPrefID" Type="int" Nullable="false" />
+          <Property Name="AppDate" Type="date" Nullable="false" />
+          <Property Name="Status" Type="bit" />
+        </EntityType>
+        <EntityType Name="Appointments">
+          <Key>
+            <PropertyRef Name="AppointmentID" />
+          </Key>
+          <Property Name="AppointmentID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AppointmentNo" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="TimeFrom" Type="time" Nullable="false" />
+          <Property Name="TimeTo" Type="time" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="CustID" Type="int" Nullable="false" />
+          <Property Name="Status" Type="bit" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="CompanyID" />
+          </Key>
+          <Property Name="CompanyID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="CompanyAddress" Type="nvarchar" MaxLength="500" />
+          <Property Name="CompanyPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyLogo" Type="image" />
+          <Property Name="CompanyStatus" Type="bit" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MembershipUserID" Type="int" Nullable="false" />
+          <Property Name="CustFirstName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="CustLastName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="CustEmail" Type="nvarchar" MaxLength="50" />
+          <Property Name="CustDescription" Type="nvarchar" MaxLength="300" />
+          <Property Name="CustPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="CustStatus" Type="bit" />
+        </EntityType>
+        <EntityType Name="DayPreferences">
+          <Key>
+            <PropertyRef Name="DayPrefID" />
+          </Key>
+          <Property Name="DayPrefID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserPrefID" Type="int" Nullable="false" />
+          <Property Name="Day" Type="nvarchar" Nullable="false" MaxLength="3" />
+          <Property Name="Status" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'AMS.dbo.ErrorLog' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="ErrorLog">
+          <Key>
+            <PropertyRef Name="ErrorID" />
+            <PropertyRef Name="Message" />
+            <PropertyRef Name="TableName" />
+            <PropertyRef Name="Action" />
+          </Key>
+          <Property Name="ErrorID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Message" Type="nvarchar" Nullable="false" MaxLength="300" />
+          <Property Name="TableName" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="Action" Type="nvarchar" Nullable="false" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="TimePreferences">
+          <Key>
+            <PropertyRef Name="TimePrefID" />
+          </Key>
+          <Property Name="TimePrefID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DayPrefID" Type="int" Nullable="false" />
+          <Property Name="TimeFrom" Type="time" Nullable="false" />
+          <Property Name="TimeTo" Type="time" Nullable="false" />
+          <Property Name="Status" Type="bit" />
+        </EntityType>
+        <EntityType Name="UserPreferences">
+          <Key>
+            <PropertyRef Name="UserPrefID" />
+          </Key>
+          <Property Name="UserPrefID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="BookingDays" Type="int" Nullable="false" />
+          <Property Name="SlotDuration" Type="int" Nullable="false" />
+          <Property Name="Status" Type="bit" />
+        </EntityType>
+        <EntityType Name="UserProfile">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MembershipUserID" Type="int" Nullable="false" />
+          <Property Name="UserFirstName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="UserLastName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="UserTitle" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="UserEmail" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserDescription" Type="nvarchar" MaxLength="300" />
+          <Property Name="UserPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserStatus" Type="bit" />
+          <Property Name="CompanyID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="webpages_Membership">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="ConfirmationToken" Type="nvarchar" MaxLength="128" />
+          <Property Name="IsConfirmed" Type="bit" />
+          <Property Name="LastPasswordFailureDate" Type="datetime" />
+          <Property Name="PasswordFailuresSinceLastSuccess" Type="int" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="PasswordChangedDate" Type="datetime" />
+          <Property Name="PasswordSalt" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="PasswordVerificationToken" Type="nvarchar" MaxLength="128" />
+          <Property Name="PasswordVerificationTokenExpirationDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="webpages_OAuthMembership">
+          <Key>
+            <PropertyRef Name="Provider" />
+            <PropertyRef Name="ProviderUserId" />
+          </Key>
+          <Property Name="Provider" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="ProviderUserId" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="webpages_Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="nvarchar" Nullable="false" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="webpages_UsersInRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Appointme__CustI__3E52440B">
+          <End Role="Customer" Type="AMSModel.Store.Customer" Multiplicity="1" />
+          <End Role="Appointments" Type="AMSModel.Store.Appointments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="Appointments">
+              <PropertyRef Name="CustID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Appointme__DayPr__3D5E1FD2">
+          <End Role="DayPreferences" Type="AMSModel.Store.DayPreferences" Multiplicity="1" />
+          <End Role="AppointmentAvail" Type="AMSModel.Store.AppointmentAvail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DayPreferences">
+              <PropertyRef Name="DayPrefID" />
+            </Principal>
+            <Dependent Role="AppointmentAvail">
+              <PropertyRef Name="DayPrefID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Appointme__UserI__3F466844">
+          <End Role="Users" Type="AMSModel.Store.Users" Multiplicity="1" />
+          <End Role="Appointments" Type="AMSModel.Store.Appointments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Appointments">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DayPrefer__UserP__403A8C7D">
+          <End Role="UserPreferences" Type="AMSModel.Store.UserPreferences" Multiplicity="1" />
+          <End Role="DayPreferences" Type="AMSModel.Store.DayPreferences" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserPreferences">
+              <PropertyRef Name="UserPrefID" />
+            </Principal>
+            <Dependent Role="DayPreferences">
+              <PropertyRef Name="UserPrefID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TimePrefe__DayPr__412EB0B6">
+          <End Role="DayPreferences" Type="AMSModel.Store.DayPreferences" Multiplicity="1" />
+          <End Role="TimePreferences" Type="AMSModel.Store.TimePreferences" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DayPreferences">
+              <PropertyRef Name="DayPrefID" />
+            </Principal>
+            <Dependent Role="TimePreferences">
+              <PropertyRef Name="DayPrefID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserPrefe__UserI__4222D4EF">
+          <End Role="Users" Type="AMSModel.Store.Users" Multiplicity="1" />
+          <End Role="UserPreferences" Type="AMSModel.Store.UserPreferences" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserPreferences">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Users__CompanyID__4316F928">
+          <End Role="Company" Type="AMSModel.Store.Company" Multiplicity="1" />
+          <End Role="Users" Type="AMSModel.Store.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyID" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="CompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_RoleId">
+          <End Role="webpages_Roles" Type="AMSModel.Store.webpages_Roles" Multiplicity="1" />
+          <End Role="webpages_UsersInRoles" Type="AMSModel.Store.webpages_UsersInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="webpages_Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="webpages_UsersInRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_UserId">
+          <End Role="UserProfile" Type="AMSModel.Store.UserProfile" Multiplicity="1" />
+          <End Role="webpages_UsersInRoles" Type="AMSModel.Store.webpages_UsersInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="webpages_UsersInRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AMSModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="AMSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ActivityLogs" EntityType="AMSModel.ActivityLog" />
+          <EntitySet Name="AppointmentAvails" EntityType="AMSModel.AppointmentAvail" />
+          <EntitySet Name="Appointments" EntityType="AMSModel.Appointment" />
+          <EntitySet Name="Companies" EntityType="AMSModel.Company" />
+          <EntitySet Name="Customers" EntityType="AMSModel.Customer" />
+          <EntitySet Name="DayPreferences" EntityType="AMSModel.DayPreference" />
+          <EntitySet Name="ErrorLogs" EntityType="AMSModel.ErrorLog" />
+          <EntitySet Name="TimePreferences" EntityType="AMSModel.TimePreference" />
+          <EntitySet Name="UserPreferences" EntityType="AMSModel.UserPreference" />
+          <EntitySet Name="UserProfiles" EntityType="AMSModel.UserProfile" />
+          <EntitySet Name="Users" EntityType="AMSModel.User" />
+          <EntitySet Name="webpages_Membership" EntityType="AMSModel.webpages_Membership" />
+          <EntitySet Name="webpages_OAuthMembership" EntityType="AMSModel.webpages_OAuthMembership" />
+          <EntitySet Name="webpages_Roles" EntityType="AMSModel.webpages_Roles" />
+          <AssociationSet Name="FK__Appointme__DayPr__3D5E1FD2" Association="AMSModel.FK__Appointme__DayPr__3D5E1FD2">
+            <End Role="DayPreferences" EntitySet="DayPreferences" />
+            <End Role="AppointmentAvail" EntitySet="AppointmentAvails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Appointme__CustI__3E52440B" Association="AMSModel.FK__Appointme__CustI__3E52440B">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Appointments" EntitySet="Appointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Appointme__UserI__3F466844" Association="AMSModel.FK__Appointme__UserI__3F466844">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Appointments" EntitySet="Appointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Users__CompanyID__4316F928" Association="AMSModel.FK__Users__CompanyID__4316F928">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DayPrefer__UserP__403A8C7D" Association="AMSModel.FK__DayPrefer__UserP__403A8C7D">
+            <End Role="UserPreferences" EntitySet="UserPreferences" />
+            <End Role="DayPreferences" EntitySet="DayPreferences" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TimePrefe__DayPr__412EB0B6" Association="AMSModel.FK__TimePrefe__DayPr__412EB0B6">
+            <End Role="DayPreferences" EntitySet="DayPreferences" />
+            <End Role="TimePreferences" EntitySet="TimePreferences" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserPrefe__UserI__4222D4EF" Association="AMSModel.FK__UserPrefe__UserI__4222D4EF">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserPreferences" EntitySet="UserPreferences" />
+          </AssociationSet>
+          <AssociationSet Name="webpages_UsersInRoles" Association="AMSModel.webpages_UsersInRoles">
+            <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ActivityLog">
+          <Key>
+            <PropertyRef Name="ActivityID" />
+            <PropertyRef Name="MembershipID" />
+            <PropertyRef Name="TableName" />
+            <PropertyRef Name="DateTime" />
+            <PropertyRef Name="Action" />
+            <PropertyRef Name="IPAddress" />
+          </Key>
+          <Property Name="ActivityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MembershipID" Type="Int32" Nullable="false" />
+          <Property Name="TableName" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="DateTime" Type="DateTime" Nullable="false" />
+          <Property Name="Action" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="IPAddress" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="AppointmentAvail">
+          <Key>
+            <PropertyRef Name="AppAvailID" />
+          </Key>
+          <Property Name="AppAvailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DayPrefID" Type="Int32" Nullable="false" />
+          <Property Name="AppDate" Type="DateTime" Nullable="false" />
+          <Property Name="Status" Type="Boolean" />
+          <NavigationProperty Name="DayPreference" Relationship="AMSModel.FK__Appointme__DayPr__3D5E1FD2" FromRole="AppointmentAvail" ToRole="DayPreferences" />
+        </EntityType>
+        <EntityType Name="Appointment">
+          <Key>
+            <PropertyRef Name="AppointmentID" />
+          </Key>
+          <Property Name="AppointmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AppointmentNo" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <Property Name="TimeFrom" Type="Time" Nullable="false" />
+          <Property Name="TimeTo" Type="Time" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="CustID" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Boolean" />
+          <NavigationProperty Name="Customer" Relationship="AMSModel.FK__Appointme__CustI__3E52440B" FromRole="Appointments" ToRole="Customer" />
+          <NavigationProperty Name="User" Relationship="AMSModel.FK__Appointme__UserI__3F466844" FromRole="Appointments" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="CompanyID" />
+          </Key>
+          <Property Name="CompanyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="CompanyAddress" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="CompanyPhone" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="CompanyLogo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="CompanyStatus" Type="Boolean" />
+          <NavigationProperty Name="Users" Relationship="AMSModel.FK__Users__CompanyID__4316F928" FromRole="Company" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MembershipUserID" Type="Int32" Nullable="false" />
+          <Property Name="CustFirstName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="CustLastName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="CustEmail" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="CustDescription" Type="String" MaxLength="300" Unicode="true" FixedLength="false" />
+          <Property Name="CustPhone" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="CustStatus" Type="Boolean" />
+          <NavigationProperty Name="Appointments" Relationship="AMSModel.FK__Appointme__CustI__3E52440B" FromRole="Customer" ToRole="Appointments" />
+        </EntityType>
+        <EntityType Name="DayPreference">
+          <Key>
+            <PropertyRef Name="DayPrefID" />
+          </Key>
+          <Property Name="DayPrefID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserPrefID" Type="Int32" Nullable="false" />
+          <Property Name="Day" Type="String" Nullable="false" MaxLength="3" Unicode="true" FixedLength="false" />
+          <Property Name="Status" Type="Boolean" />
+          <NavigationProperty Name="AppointmentAvails" Relationship="AMSModel.FK__Appointme__DayPr__3D5E1FD2" FromRole="DayPreferences" ToRole="AppointmentAvail" />
+          <NavigationProperty Name="UserPreference" Relationship="AMSModel.FK__DayPrefer__UserP__403A8C7D" FromRole="DayPreferences" ToRole="UserPreferences" />
+          <NavigationProperty Name="TimePreferences" Relationship="AMSModel.FK__TimePrefe__DayPr__412EB0B6" FromRole="DayPreferences" ToRole="TimePreferences" />
+        </EntityType>
+        <EntityType Name="ErrorLog">
+          <Key>
+            <PropertyRef Name="ErrorID" />
+            <PropertyRef Name="Message" />
+            <PropertyRef Name="TableName" />
+            <PropertyRef Name="Action" />
+          </Key>
+          <Property Name="ErrorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Message" Type="String" Nullable="false" MaxLength="300" Unicode="true" FixedLength="false" />
+          <Property Name="TableName" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Action" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TimePreference">
+          <Key>
+            <PropertyRef Name="TimePrefID" />
+          </Key>
+          <Property Name="TimePrefID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DayPrefID" Type="Int32" Nullable="false" />
+          <Property Name="TimeFrom" Type="Time" Nullable="false" />
+          <Property Name="TimeTo" Type="Time" Nullable="false" />
+          <Property Name="Status" Type="Boolean" />
+          <NavigationProperty Name="DayPreference" Relationship="AMSModel.FK__TimePrefe__DayPr__412EB0B6" FromRole="TimePreferences" ToRole="DayPreferences" />
+        </EntityType>
+        <EntityType Name="UserPreference">
+          <Key>
+            <PropertyRef Name="UserPrefID" />
+          </Key>
+          <Property Name="UserPrefID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="BookingDays" Type="Int32" Nullable="false" />
+          <Property Name="SlotDuration" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Boolean" />
+          <NavigationProperty Name="DayPreferences" Relationship="AMSModel.FK__DayPrefer__UserP__403A8C7D" FromRole="UserPreferences" ToRole="DayPreferences" />
+          <NavigationProperty Name="User" Relationship="AMSModel.FK__UserPrefe__UserI__4222D4EF" FromRole="UserPreferences" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="UserProfile">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="webpages_Roles" Relationship="AMSModel.webpages_UsersInRoles" FromRole="UserProfile" ToRole="webpages_Roles" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MembershipUserID" Type="Int32" Nullable="false" />
+          <Property Name="UserFirstName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="UserLastName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="UserTitle" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="UserEmail" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="UserDescription" Type="String" MaxLength="300" Unicode="true" FixedLength="false" />
+          <Property Name="UserPhone" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="UserStatus" Type="Boolean" />
+          <Property Name="CompanyID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Appointments" Relationship="AMSModel.FK__Appointme__UserI__3F466844" FromRole="Users" ToRole="Appointments" />
+          <NavigationProperty Name="Company" Relationship="AMSModel.FK__Users__CompanyID__4316F928" FromRole="Users" ToRole="Company" />
+          <NavigationProperty Name="UserPreferences" Relationship="AMSModel.FK__UserPrefe__UserI__4222D4EF" FromRole="Users" ToRole="UserPreferences" />
+        </EntityType>
+        <EntityType Name="webpages_Membership">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" />
+          <Property Name="ConfirmationToken" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="IsConfirmed" Type="Boolean" />
+          <Property Name="LastPasswordFailureDate" Type="DateTime" />
+          <Property Name="PasswordFailuresSinceLastSuccess" Type="Int32" Nullable="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="PasswordChangedDate" Type="DateTime" />
+          <Property Name="PasswordSalt" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="PasswordVerificationToken" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="PasswordVerificationTokenExpirationDate" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="webpages_OAuthMembership">
+          <Key>
+            <PropertyRef Name="Provider" />
+            <PropertyRef Name="ProviderUserId" />
+          </Key>
+          <Property Name="Provider" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="ProviderUserId" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="webpages_Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="UserProfiles" Relationship="AMSModel.webpages_UsersInRoles" FromRole="webpages_Roles" ToRole="UserProfile" />
+        </EntityType>
+        <Association Name="FK__Appointme__DayPr__3D5E1FD2">
+          <End Role="DayPreferences" Type="AMSModel.DayPreference" Multiplicity="1" />
+          <End Role="AppointmentAvail" Type="AMSModel.AppointmentAvail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DayPreferences">
+              <PropertyRef Name="DayPrefID" />
+            </Principal>
+            <Dependent Role="AppointmentAvail">
+              <PropertyRef Name="DayPrefID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Appointme__CustI__3E52440B">
+          <End Role="Customer" Type="AMSModel.Customer" Multiplicity="1" />
+          <End Role="Appointments" Type="AMSModel.Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="Appointments">
+              <PropertyRef Name="CustID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Appointme__UserI__3F466844">
+          <End Role="Users" Type="AMSModel.User" Multiplicity="1" />
+          <End Role="Appointments" Type="AMSModel.Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Appointments">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Users__CompanyID__4316F928">
+          <End Role="Company" Type="AMSModel.Company" Multiplicity="1" />
+          <End Role="Users" Type="AMSModel.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyID" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="CompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DayPrefer__UserP__403A8C7D">
+          <End Role="UserPreferences" Type="AMSModel.UserPreference" Multiplicity="1" />
+          <End Role="DayPreferences" Type="AMSModel.DayPreference" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserPreferences">
+              <PropertyRef Name="UserPrefID" />
+            </Principal>
+            <Dependent Role="DayPreferences">
+              <PropertyRef Name="UserPrefID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TimePrefe__DayPr__412EB0B6">
+          <End Role="DayPreferences" Type="AMSModel.DayPreference" Multiplicity="1" />
+          <End Role="TimePreferences" Type="AMSModel.TimePreference" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DayPreferences">
+              <PropertyRef Name="DayPrefID" />
+            </Principal>
+            <Dependent Role="TimePreferences">
+              <PropertyRef Name="DayPrefID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserPrefe__UserI__4222D4EF">
+          <End Role="Users" Type="AMSModel.User" Multiplicity="1" />
+          <End Role="UserPreferences" Type="AMSModel.UserPreference" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserPreferences">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="webpages_UsersInRoles">
+          <End Role="webpages_Roles" Type="AMSModel.webpages_Roles" Multiplicity="*" />
+          <End Role="UserProfile" Type="AMSModel.UserProfile" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AMSModelStoreContainer" CdmEntityContainer="AMSEntities">
+          <EntitySetMapping Name="ActivityLogs">
+            <EntityTypeMapping TypeName="AMSModel.ActivityLog">
+              <MappingFragment StoreEntitySet="ActivityLog">
+                <ScalarProperty Name="ActivityID" ColumnName="ActivityID" />
+                <ScalarProperty Name="MembershipID" ColumnName="MembershipID" />
+                <ScalarProperty Name="TableName" ColumnName="TableName" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AppointmentAvails">
+            <EntityTypeMapping TypeName="AMSModel.AppointmentAvail">
+              <MappingFragment StoreEntitySet="AppointmentAvail">
+                <ScalarProperty Name="AppAvailID" ColumnName="AppAvailID" />
+                <ScalarProperty Name="DayPrefID" ColumnName="DayPrefID" />
+                <ScalarProperty Name="AppDate" ColumnName="AppDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Appointments">
+            <EntityTypeMapping TypeName="AMSModel.Appointment">
+              <MappingFragment StoreEntitySet="Appointments">
+                <ScalarProperty Name="AppointmentID" ColumnName="AppointmentID" />
+                <ScalarProperty Name="AppointmentNo" ColumnName="AppointmentNo" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="TimeFrom" ColumnName="TimeFrom" />
+                <ScalarProperty Name="TimeTo" ColumnName="TimeTo" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="CustID" ColumnName="CustID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="AMSModel.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
+                <ScalarProperty Name="CompanyPhone" ColumnName="CompanyPhone" />
+                <ScalarProperty Name="CompanyLogo" ColumnName="CompanyLogo" />
+                <ScalarProperty Name="CompanyStatus" ColumnName="CompanyStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="AMSModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="MembershipUserID" ColumnName="MembershipUserID" />
+                <ScalarProperty Name="CustFirstName" ColumnName="CustFirstName" />
+                <ScalarProperty Name="CustLastName" ColumnName="CustLastName" />
+                <ScalarProperty Name="CustEmail" ColumnName="CustEmail" />
+                <ScalarProperty Name="CustDescription" ColumnName="CustDescription" />
+                <ScalarProperty Name="CustPhone" ColumnName="CustPhone" />
+                <ScalarProperty Name="CustStatus" ColumnName="CustStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DayPreferences">
+            <EntityTypeMapping TypeName="AMSModel.DayPreference">
+              <MappingFragment StoreEntitySet="DayPreferences">
+                <ScalarProperty Name="DayPrefID" ColumnName="DayPrefID" />
+                <ScalarProperty Name="UserPrefID" ColumnName="UserPrefID" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ErrorLogs">
+            <EntityTypeMapping TypeName="AMSModel.ErrorLog">
+              <MappingFragment StoreEntitySet="ErrorLog">
+                <ScalarProperty Name="ErrorID" ColumnName="ErrorID" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="TableName" ColumnName="TableName" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TimePreferences">
+            <EntityTypeMapping TypeName="AMSModel.TimePreference">
+              <MappingFragment StoreEntitySet="TimePreferences">
+                <ScalarProperty Name="TimePrefID" ColumnName="TimePrefID" />
+                <ScalarProperty Name="DayPrefID" ColumnName="DayPrefID" />
+                <ScalarProperty Name="TimeFrom" ColumnName="TimeFrom" />
+                <ScalarProperty Name="TimeTo" ColumnName="TimeTo" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserPreferences">
+            <EntityTypeMapping TypeName="AMSModel.UserPreference">
+              <MappingFragment StoreEntitySet="UserPreferences">
+                <ScalarProperty Name="UserPrefID" ColumnName="UserPrefID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="BookingDays" ColumnName="BookingDays" />
+                <ScalarProperty Name="SlotDuration" ColumnName="SlotDuration" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserProfiles">
+            <EntityTypeMapping TypeName="AMSModel.UserProfile">
+              <MappingFragment StoreEntitySet="UserProfile">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="AMSModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="MembershipUserID" ColumnName="MembershipUserID" />
+                <ScalarProperty Name="UserFirstName" ColumnName="UserFirstName" />
+                <ScalarProperty Name="UserLastName" ColumnName="UserLastName" />
+                <ScalarProperty Name="UserTitle" ColumnName="UserTitle" />
+                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+                <ScalarProperty Name="UserDescription" ColumnName="UserDescription" />
+                <ScalarProperty Name="UserPhone" ColumnName="UserPhone" />
+                <ScalarProperty Name="UserStatus" ColumnName="UserStatus" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="webpages_Membership">
+            <EntityTypeMapping TypeName="AMSModel.webpages_Membership">
+              <MappingFragment StoreEntitySet="webpages_Membership">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ConfirmationToken" ColumnName="ConfirmationToken" />
+                <ScalarProperty Name="IsConfirmed" ColumnName="IsConfirmed" />
+                <ScalarProperty Name="LastPasswordFailureDate" ColumnName="LastPasswordFailureDate" />
+                <ScalarProperty Name="PasswordFailuresSinceLastSuccess" ColumnName="PasswordFailuresSinceLastSuccess" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="PasswordChangedDate" ColumnName="PasswordChangedDate" />
+                <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+                <ScalarProperty Name="PasswordVerificationToken" ColumnName="PasswordVerificationToken" />
+                <ScalarProperty Name="PasswordVerificationTokenExpirationDate" ColumnName="PasswordVerificationTokenExpirationDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="webpages_OAuthMembership">
+            <EntityTypeMapping TypeName="AMSModel.webpages_OAuthMembership">
+              <MappingFragment StoreEntitySet="webpages_OAuthMembership">
+                <ScalarProperty Name="Provider" ColumnName="Provider" />
+                <ScalarProperty Name="ProviderUserId" ColumnName="ProviderUserId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="webpages_Roles">
+            <EntityTypeMapping TypeName="AMSModel.webpages_Roles">
+              <MappingFragment StoreEntitySet="webpages_Roles">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="webpages_UsersInRoles" TypeName="AMSModel.webpages_UsersInRoles" StoreEntitySet="webpages_UsersInRoles">
+            <EndProperty Name="webpages_Roles">
+              <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="UserProfile">
+              <ScalarProperty Name="UserId" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="AMS">
+        <EntityTypeShape EntityType="AMSModel.ActivityLog" Width="1.5" PointX="7.75" PointY="4.375" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMSModel.AppointmentAvail" Width="1.5" PointX="9.75" PointY="7.375" Height="1.9802864583333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMSModel.Appointment" Width="1.5" PointX="5.25" PointY="4.625" Height="2.9417936197916656" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMSModel.Company" Width="1.5" PointX="0.75" PointY="5" Height="2.3648893229166656" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMSModel.Customer" Width="1.5" PointX="3" PointY="0.75" Height="2.7494921874999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMSModel.DayPreference" Width="1.5" PointX="7.5" PointY="8.625" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMSModel.ErrorLog" Width="1.5" PointX="0.75" PointY="9.375" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMSModel.TimePreference" Width="1.5" PointX="9.75" PointY="10.125" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMSModel.UserPreference" Width="1.5" PointX="5.25" PointY="8.625" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMSModel.UserProfile" Width="1.5" PointX="8" PointY="1.5" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMSModel.User" Width="1.5" PointX="3" PointY="4.375" Height="3.5186979166666674" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMSModel.webpages_Membership" Width="1.5" PointX="10.75" PointY="1.375" Height="3.1340950520833317" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMSModel.webpages_OAuthMembership" Width="1.5" PointX="0.75" PointY="12.375" Height="1.5956835937500031" IsExpanded="true" />
+        <EntityTypeShape EntityType="AMSModel.webpages_Roles" Width="1.5" PointX="5.75" PointY="1.5" Height="1.5956835937500031" IsExpanded="true" />
+        <AssociationConnector Association="AMSModel.FK__Appointme__DayPr__3D5E1FD2" ManuallyRouted="false">
+          <ConnectorPoint PointX="9" PointY="8.9901432291666659" />
+          <ConnectorPoint PointX="9.75" PointY="8.9901432291666659" />
+        </AssociationConnector>
+        <AssociationConnector Association="AMSModel.FK__Appointme__CustI__3E52440B" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="1.09375" />
+          <ConnectorPoint PointX="5.46875" PointY="1.09375" />
+          <ConnectorPoint PointX="5.46875" PointY="4.625" />
+        </AssociationConnector>
+        <AssociationConnector Association="AMSModel.FK__Appointme__UserI__3F466844" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="6.0958968098958328" />
+          <ConnectorPoint PointX="5.25" PointY="6.0958968098958328" />
+        </AssociationConnector>
+        <AssociationConnector Association="AMSModel.FK__Users__CompanyID__4316F928" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="6.1824446614583328" />
+          <ConnectorPoint PointX="3" PointY="6.1824446614583328" />
+        </AssociationConnector>
+        <AssociationConnector Association="AMSModel.FK__DayPrefer__UserP__403A8C7D" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="9.8074446614583337" />
+          <ConnectorPoint PointX="7.5" PointY="9.8074446614583337" />
+        </AssociationConnector>
+        <AssociationConnector Association="AMSModel.FK__TimePrefe__DayPr__412EB0B6" ManuallyRouted="false">
+          <ConnectorPoint PointX="9" PointY="10.557444661458334" />
+          <ConnectorPoint PointX="9.75" PointY="10.557444661458334" />
+        </AssociationConnector>
+        <AssociationConnector Association="AMSModel.FK__UserPrefe__UserI__4222D4EF" ManuallyRouted="false">
+          <ConnectorPoint PointX="3.75" PointY="7.8936979166666674" />
+          <ConnectorPoint PointX="3.75" PointY="9.8074446614583337" />
+          <ConnectorPoint PointX="5.25" PointY="9.8074446614583337" />
+        </AssociationConnector>
+        <AssociationConnector Association="AMSModel.webpages_UsersInRoles" ManuallyRouted="false">
+          <ConnectorPoint PointX="7.25" PointY="2.297841796875" />
+          <ConnectorPoint PointX="8" PointY="2.297841796875" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
