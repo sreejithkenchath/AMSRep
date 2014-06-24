@@ -164,6 +164,7 @@
     <Compile Include="ActivityLog.cs">
       <DependentUpon>AMSContextModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="AMS BLL\AppointmentBLL.cs" />
     <Compile Include="AMSBLLFacade\IAppointmentBLLFacade.cs" />
     <Compile Include="AMSBLLFacade\IUserBLLFacade.cs" />
     <Compile Include="AMS BLL\CompanyBLL.cs" />
@@ -434,6 +435,8 @@
     <Content Include="Views\Appointment\Preferences.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\User\Delete.cshtml" />
+    <Content Include="Views\Appointment\Index.cshtml" />
+    <Content Include="Views\User\MyProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

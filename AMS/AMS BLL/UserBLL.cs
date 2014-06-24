@@ -24,20 +24,20 @@ namespace AMS.AMS_BLL
             this.DataStore = new EFRepository();
         }
 
-        public string AddNewUser(FormCollection collection,User user)
+        public string AddNewUser(FormCollection collection, User user)
         {
             Message = null;
-            IsValid=true;
-            AMSEntities ae=new AMSEntities();
-           // User emailcheck = ae.Users.Where(e => e.UserEmail == user.UserEmail).Single();
-            
-         //   if (emailcheck != null)
-         //       SetError("Email Id already Exists");
+            IsValid = true;
+            AMSEntities ae = new AMSEntities();
+            // User emailcheck = ae.Users.Where(e => e.UserEmail == user.UserEmail).Single();
+
+            //   if (emailcheck != null)
+            //       SetError("Email Id already Exists");
 
             //User uu=ae.Users.Where(e => e.MembershipUserID == WebSecurity.CurrentUserId).Single();
             User uu = DataStore.Get<User>(e => e.MembershipUserID == WebSecurity.CurrentUserId);
             String uname = collection.Get("UserName");
-            String paswd=collection.Get("Password");
+            String paswd = collection.Get("Password");
             user.CompanyID = uu.CompanyID;
             if (IsValid)
             {
@@ -53,7 +53,7 @@ namespace AMS.AMS_BLL
                     Emailer.Send(user.UserEmail, "Welcome to AMS", "Please reset your password");
                     t.Complete();
                 };
-                Message="successfully added a new user";
+                Message = "successfully added a new user";
                 return Message;
             }
             else
@@ -75,17 +75,18 @@ namespace AMS.AMS_BLL
 
         public User GetUserbyId(int p)
         {
-           return DataStore.Get<User>(e => e.MembershipUserID == p);
+            return DataStore.Get<User>(e => e.MembershipUserID == p);
+        }
+
+        public User GetUserDetails(int uid)
+        {
+            User user = DataStore.Get<User>(e => e.MembershipUserID == uid);
+            return user;
         }
 
         internal List<User> getUsers()
         {
             return DataStore.All<User>().ToList();
-        }
-
-        internal void EditUser(User user)
-        {
-            DataStore.Update<User>(user);
         }
     }
 }

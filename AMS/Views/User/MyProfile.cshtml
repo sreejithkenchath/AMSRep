@@ -1,0 +1,117 @@
+﻿@model AMS.User
+
+@{
+    ViewBag.Title = "User Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="sidemenu_head" style="font-size:20px;font-weight:bold;">User Profile</div>
+                            <div class="sidemenu">
+
+
+<h2>MyProfile</h2>
+
+<fieldset>
+    <legend>User</legend>
+    <table cellpadding="10" cellspacing="10" >
+    <tr>
+    <th>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MembershipUserID)
+    </div>
+    </th>
+    <th>
+     <div class="display-label">
+         @Html.DisplayNameFor(model => model.UserFirstName)
+    </div>
+    </th>
+    <th>
+      <div class="display-label">
+         @Html.DisplayNameFor(model => model.UserLastName)
+    </div>
+    </th>
+    <th>
+     <div class="display-label">
+         @Html.DisplayNameFor(model => model.UserTitle)
+    </div>
+    </th>
+    <th>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UserEmail)
+    </div>
+    </th>
+    <th>
+     <div class="display-label">
+         @Html.DisplayNameFor(model => model.UserDescription)
+    </div>
+    </th>
+    <th>
+     <div class="display-label">
+         @Html.DisplayNameFor(model => model.UserPhone)
+    </div>
+    </th>
+    <th>
+     <div class="display-label">
+         @Html.DisplayNameFor(model => model.UserStatus)
+     </div>
+    </th>
+    <th>
+        <div class="display-label">
+         @Html.DisplayNameFor(model => model.CompanyID)
+    </div>
+    </th>
+    </tr>
+    <tr>
+    <td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MembershipUserID)
+    </div>
+    </td>
+    <td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserFirstName)
+    </div>
+    </td>
+    <td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserLastName)
+    </div>
+    </td>
+    <td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserTitle)
+    </div>
+    </td>
+    <td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserEmail)
+    </div>
+    </td>
+    <td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserDescription)
+    </div>
+    </td>
+    <td>
+    
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserPhone)
+    </div>
+    </td>
+    <td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserStatus)
+    </div>
+    </td>
+    <td>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CompanyID)
+    </div>
+   </td>
+   </tr>
+   </table>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.UserID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

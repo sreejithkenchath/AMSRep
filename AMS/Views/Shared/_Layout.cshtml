@@ -115,20 +115,22 @@
 
     </div>
     }
-    @if (Roles.IsUserInRole(WebSecurity.CurrentUserName,"User"))
-    {
+     @if (Roles.IsUserInRole(WebSecurity.CurrentUserName, "User"))
+     {
     <div class="breadcrumb_holder">
         <div class="container">
             <ol class="breadcrumb">
                 <li><a href="#">Home</a></li><li><a href="#">About Us</a></li>
                 <li ><span class="activebread">Dashboard</span></li>
-                <li><a href="@Url.Action("Index", "Company")" >Edit Company</a></li>
-                <li><a href="@Url.Action("Users", "Users")" >User Profile</a></li>
+                <li><a href="@Url.Action("Index", "Appointment")" >My Appointments</a></li>
+                <li><a href="@Url.Action("MyProfile", "User")" >User Profile</a></li>
             </ol>
         </div>
+        </div>
+     }
 
-    </div>
-    }
+   
+    
     @if (Roles.IsUserInRole(WebSecurity.CurrentUserName,"Customer"))
     {
     <div class="breadcrumb_holder">
@@ -172,7 +174,8 @@
     <div class="container">
         <div class="col-md-1 col-xs-4"></div>
         <div class="col-md-8"></div>
-        <div class="col-md-3 col-xs-8"><p class="copyright">&copy; 2014. All Rights Reserved<br />developed by <a target="_blank" href="#">Team 5 FT</a></p></div>
+        <div class="col-md-3 col-xs-8"><p class="copyright">&copy; 2014. All Rights Reserved<br />
+developed by <a target="_blank" href="#">Team 5 FT</a></p></div>
     </div>
 </div>
 <!---menu scripts--->
