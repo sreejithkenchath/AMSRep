@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "DayTimePreference";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="../../Content/JqxGrid/JqxGrid/Styles/jqx.base.css" rel="stylesheet" type="text/css" />
+<script src="../../Content/JqxGrid/JqxGrid/Js/demos.js" type="text/javascript"></script>
+<script src="../../Content/JqxGrid/JqxGrid/Js/jqxcore.js" type="text/javascript"></script>
+<script src="../../Content/JqxGrid/JqxGrid/Js/jqxbuttons.js" type="text/javascript"></script>
+<script src="../../Content/JqxGrid/JqxGrid/Js/jqxscrollbar.js" type="text/javascript"></script>
+<script src="../../Content/JqxGrid/JqxGrid/Js/jqxlistbox.js" type="text/javascript"></script>
+<script src="../../Content/JqxGrid/JqxGrid/Js/jqxdropdownlist.js" type="text/javascript"></script>
+
+
+<script src="../../Content/js/Preference.js" type="text/javascript"></script>
+
+
+<link href="../../Content/css/Preference.css" rel="stylesheet" type="text/css" />
+<div class="">
+    <div class="fullDiv">
+        <div class="halfDiv">
+            <br/>
+            <div id='DayList'>
+        </div>
+            <br/>
+            <input type="text" id="TimeFrom1" placeholder="Session 1 start time" class="form-control" style="margin-top:5px;"/>
+            <br/>
+            <input type="text" id="TimeFrom2"placeholder="Session 2 start time" class="form-control"/>
+        </div>
+        <div class ="halfDiv" style="margin-top: 10px;">
+            <br/>
+            <br/>
+            <br/>
+       
+            <input type="text" id="TimeTo1" placeholder="Session 1 end time" class="form-control"/>
+            <br/>
+            <input type="text" id="TimeTo2"placeholder="Session 2 end time" class="form-control"/>
+            <br/>
+            <input type="button" id ="btnSave" value="Save" class="btn btn-primary"/>
+            <br/>
+            <label id="lblValidate"></label>
+        </div>
+</div>

@@ -41,7 +41,7 @@ namespace AMS.Repositories
 
             return dbContext.Set<T>().AsQueryable();
         }
-
+        
         public T Get<T>(Expression<Func<T, bool>> expression, string[] includes = null) where T : class
         {
             return All<T>(includes).FirstOrDefault(expression);
