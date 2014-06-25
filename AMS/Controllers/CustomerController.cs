@@ -14,7 +14,7 @@ namespace AMS.Controllers
         //
         // GET: /Customer/
 
-        [AllowAnonymous]
+        
         public ActionResult  Index()
         {
             return View();
@@ -35,10 +35,10 @@ namespace AMS.Controllers
                 }
                 else
                 {
-
+                    ViewBag.Message = message;
                     //ViewData["Result"] = message;
                     //return View("Result");
-                    return RedirectToAction("Login", "Account");
+                    return View();
                 }
           
             

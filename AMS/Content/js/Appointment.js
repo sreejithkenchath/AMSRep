@@ -10,7 +10,7 @@
     //-----------------------------------------------------------------------------------------------------------
 
     $('#search').click(function () {
-        alert('here');
+       
 
         CompanyID = $("#cmbCompany").jqxComboBox('getSelectedItem');
         if (CompanyID == 0) {
@@ -137,6 +137,18 @@ function BindAppointmentGrid(UID, DT) {
                     //PostCargoGridData(data);
                     //PostPackageGridData(data);
                     alert(data);
+                    CompanyID = $("#cmbCompany").jqxComboBox('getSelectedItem');
+                    if (CompanyID == 0) {
+                        alert("Select Company First");
+                    }
+
+                    UserID = $("#cmbUser").jqxComboBox('getSelectedItem');
+                    if (UserID == 0) {
+                        alert('Select User')
+                    }
+                    var ApDate = $('#Date').jqxDateTimeInput('getText');
+
+                    BindAppointmentGrid(UserID.value, ApDate);
                 });
             });
 }
