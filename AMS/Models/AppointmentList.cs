@@ -9,7 +9,7 @@ namespace AMS.Models
     {
 
     
-        public int AppointmentNo { get; set; }
+        public string AppointmentNo { get; set; }
         public string Date { get; set; }
         public System.TimeSpan TimeFrom { get; set; }
         public System.TimeSpan TimeTo { get; set; }

@@ -34,6 +34,10 @@ namespace AMS
         public DbSet<ErrorLog> ErrorLogs { get; set; }
         public DbSet<TimePreference> TimePreferences { get; set; }
         public DbSet<UserPreference> UserPreferences { get; set; }
+        public DbSet<UserProfile> UserProfiles { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<webpages_Membership> webpages_Membership { get; set; }
+        public DbSet<webpages_OAuthMembership> webpages_OAuthMembership { get; set; }
+        public DbSet<webpages_Roles> webpages_Roles { get; set; }
     }
 }

@@ -6,6 +6,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using WebMatrix.WebData;
 
 namespace AMS
 {
@@ -23,6 +24,13 @@ namespace AMS
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
+
+                    WebSecurity.InitializeDatabaseConnection(
+                  connectionStringName: "AMSConnectionString",
+                  userTableName: "UserProfile",
+                  userIdColumn: "UserID",
+                  userNameColumn: "UserName",
+                  autoCreateTables: true);
         }
     }
 }

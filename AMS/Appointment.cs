@@ -15,7 +15,7 @@ namespace AMS
     public partial class Appointment
     {
         public int AppointmentID { get; set; }
-        public int AppointmentNo { get; set; }
+        public string AppointmentNo { get; set; }
         public System.DateTime Date { get; set; }
         public System.TimeSpan TimeFrom { get; set; }
         public System.TimeSpan TimeTo { get; set; }

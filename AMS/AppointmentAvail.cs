@@ -17,9 +17,11 @@ namespace AMS
         public int AppAvailID { get; set; }
         public int DayPrefID { get; set; }
         public System.DateTime AppDate { get; set; }
+        public int UserID { get; set; }
         public Nullable<bool> Status { get; set; }
     
         public virtual DayPreference DayPreference { get; set; }
+        public virtual User User { get; set; }
     }
     
 }

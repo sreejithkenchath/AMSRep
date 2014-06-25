@@ -16,6 +16,7 @@ namespace AMS
     {
         public User()
         {
+            this.AppointmentAvails = new HashSet<AppointmentAvail>();
             this.Appointments = new HashSet<Appointment>();
             this.UserPreferences = new HashSet<UserPreference>();
         }
@@ -31,6 +32,7 @@ namespace AMS
         public Nullable<bool> UserStatus { get; set; }
         public int CompanyID { get; set; }
     
+        public virtual ICollection<AppointmentAvail> AppointmentAvails { get; set; }
         public virtual ICollection<Appointment> Appointments { get; set; }
         public virtual Company Company { get; set; }
         public virtual ICollection<UserPreference> UserPreferences { get; set; }

@@ -37,5 +37,28 @@ namespace AMS.AMSBLLFacade
         //{
         //}
         //#endregion
+        AppointmentsBLL appBll;
+
+        public AMSBLLFacade()
+        {
+            user = new UserBLL();
+            appBll = new AppointmentsBLL();
+        }
+
+        public string createUserPreferencesAndAppointmentSlots(UserPreference userpreference)
+        {
+            return user.SetUserPreferences(userpreference);
+            //appBll.CreateAppointmentSlots
+        }
+
+        public List<TimePreference> GetDayTimePreferences(int p, string day)
+        {
+            return user.GetDayTimePreferences(p, day);
+        }
+
+        public string setDayTimePreference(int p, string day, string firstFrom, string firstTo, string secondFrom, string secondTo)
+        {
+           return user.setDayTimePreference(p, day, firstFrom, firstTo, secondFrom, secondTo);
+        }
     }
 }
