@@ -19,13 +19,14 @@ using System.Xml.Serialization;
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
 
-[assembly: EdmRelationshipAttribute("AMSModel", "FK__Appointme__DayPr__3D5E1FD2", "DayPreferences", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AMS_SuperAdmin.DayPreference), "AppointmentAvail", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AMS_SuperAdmin.AppointmentAvail), true)]
-[assembly: EdmRelationshipAttribute("AMSModel", "FK__Appointme__CustI__3E52440B", "Customer", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AMS_SuperAdmin.Customer), "Appointments", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AMS_SuperAdmin.Appointment), true)]
-[assembly: EdmRelationshipAttribute("AMSModel", "FK__Appointme__UserI__3F466844", "Users", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AMS_SuperAdmin.User), "Appointments", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AMS_SuperAdmin.Appointment), true)]
-[assembly: EdmRelationshipAttribute("AMSModel", "FK__Users__CompanyID__4316F928", "Company", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AMS_SuperAdmin.Company), "Users", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AMS_SuperAdmin.User), true)]
-[assembly: EdmRelationshipAttribute("AMSModel", "FK__DayPrefer__UserP__403A8C7D", "UserPreferences", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AMS_SuperAdmin.UserPreference), "DayPreferences", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AMS_SuperAdmin.DayPreference), true)]
-[assembly: EdmRelationshipAttribute("AMSModel", "FK__TimePrefe__DayPr__412EB0B6", "DayPreferences", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AMS_SuperAdmin.DayPreference), "TimePreferences", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AMS_SuperAdmin.TimePreference), true)]
-[assembly: EdmRelationshipAttribute("AMSModel", "FK__UserPrefe__UserI__4222D4EF", "Users", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AMS_SuperAdmin.User), "UserPreferences", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AMS_SuperAdmin.UserPreference), true)]
+[assembly: EdmRelationshipAttribute("AMSModel", "FK__Appointme__DayPr__534D60F1", "DayPreferences", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AMS_SuperAdmin.DayPreference), "AppointmentAvail", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AMS_SuperAdmin.AppointmentAvail), true)]
+[assembly: EdmRelationshipAttribute("AMSModel", "FK__Appointme__UserI__5441852A", "Users", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AMS_SuperAdmin.User), "AppointmentAvail", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AMS_SuperAdmin.AppointmentAvail), true)]
+[assembly: EdmRelationshipAttribute("AMSModel", "FK__Appointme__CustI__4AB81AF0", "Customer", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AMS_SuperAdmin.Customer), "Appointments", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AMS_SuperAdmin.Appointment), true)]
+[assembly: EdmRelationshipAttribute("AMSModel", "FK__Appointme__UserI__4BAC3F29", "Users", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AMS_SuperAdmin.User), "Appointments", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AMS_SuperAdmin.Appointment), true)]
+[assembly: EdmRelationshipAttribute("AMSModel", "FK__Users__CompanyID__398D8EEE", "Company", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AMS_SuperAdmin.Company), "Users", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AMS_SuperAdmin.User), true)]
+[assembly: EdmRelationshipAttribute("AMSModel", "FK__DayPrefer__UserP__36B12243", "UserPreferences", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AMS_SuperAdmin.UserPreference), "DayPreferences", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AMS_SuperAdmin.DayPreference), true)]
+[assembly: EdmRelationshipAttribute("AMSModel", "FK__TimePrefe__DayPr__37A5467C", "DayPreferences", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AMS_SuperAdmin.DayPreference), "TimePreferences", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AMS_SuperAdmin.TimePreference), true)]
+[assembly: EdmRelationshipAttribute("AMSModel", "FK__UserPrefe__UserI__38996AB5", "Users", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AMS_SuperAdmin.User), "UserPreferences", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AMS_SuperAdmin.UserPreference), true)]
 [assembly: EdmRelationshipAttribute("AMSModel", "webpages_UsersInRoles", "webpages_Roles", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AMS_SuperAdmin.webpages_Roles), "UserProfile", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AMS_SuperAdmin.UserProfile))]
 
 #endregion
@@ -648,7 +649,7 @@ namespace AMS_SuperAdmin
         /// <param name="timeTo">Initial value of the TimeTo property.</param>
         /// <param name="userID">Initial value of the UserID property.</param>
         /// <param name="custID">Initial value of the CustID property.</param>
-        public static Appointment CreateAppointment(global::System.Int32 appointmentID, global::System.Int32 appointmentNo, global::System.DateTime date, global::System.TimeSpan timeFrom, global::System.TimeSpan timeTo, global::System.Int32 userID, global::System.Int32 custID)
+        public static Appointment CreateAppointment(global::System.Int32 appointmentID, global::System.String appointmentNo, global::System.DateTime date, global::System.TimeSpan timeFrom, global::System.TimeSpan timeTo, global::System.Int32 userID, global::System.Int32 custID)
         {
             Appointment appointment = new Appointment();
             appointment.AppointmentID = appointmentID;
@@ -697,7 +698,7 @@ namespace AMS_SuperAdmin
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 AppointmentNo
+        public global::System.String AppointmentNo
         {
             get
             {
@@ -707,13 +708,13 @@ namespace AMS_SuperAdmin
             {
                 OnAppointmentNoChanging(value);
                 ReportPropertyChanging("AppointmentNo");
-                _AppointmentNo = StructuralObject.SetValidValue(value);
+                _AppointmentNo = StructuralObject.SetValidValue(value, false);
                 ReportPropertyChanged("AppointmentNo");
                 OnAppointmentNoChanged();
             }
         }
-        private global::System.Int32 _AppointmentNo;
-        partial void OnAppointmentNoChanging(global::System.Int32 value);
+        private global::System.String _AppointmentNo;
+        partial void OnAppointmentNoChanging(global::System.String value);
         partial void OnAppointmentNoChanged();
     
         /// <summary>
@@ -871,16 +872,16 @@ namespace AMS_SuperAdmin
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("AMSModel", "FK__Appointme__CustI__3E52440B", "Customer")]
+        [EdmRelationshipNavigationPropertyAttribute("AMSModel", "FK__Appointme__CustI__4AB81AF0", "Customer")]
         public Customer Customer
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Customer>("AMSModel.FK__Appointme__CustI__3E52440B", "Customer").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Customer>("AMSModel.FK__Appointme__CustI__4AB81AF0", "Customer").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Customer>("AMSModel.FK__Appointme__CustI__3E52440B", "Customer").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Customer>("AMSModel.FK__Appointme__CustI__4AB81AF0", "Customer").Value = value;
             }
         }
         /// <summary>
@@ -892,13 +893,13 @@ namespace AMS_SuperAdmin
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Customer>("AMSModel.FK__Appointme__CustI__3E52440B", "Customer");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Customer>("AMSModel.FK__Appointme__CustI__4AB81AF0", "Customer");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Customer>("AMSModel.FK__Appointme__CustI__3E52440B", "Customer", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Customer>("AMSModel.FK__Appointme__CustI__4AB81AF0", "Customer", value);
                 }
             }
         }
@@ -909,16 +910,16 @@ namespace AMS_SuperAdmin
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("AMSModel", "FK__Appointme__UserI__3F466844", "Users")]
+        [EdmRelationshipNavigationPropertyAttribute("AMSModel", "FK__Appointme__UserI__4BAC3F29", "Users")]
         public User User
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("AMSModel.FK__Appointme__UserI__3F466844", "Users").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("AMSModel.FK__Appointme__UserI__4BAC3F29", "Users").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("AMSModel.FK__Appointme__UserI__3F466844", "Users").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("AMSModel.FK__Appointme__UserI__4BAC3F29", "Users").Value = value;
             }
         }
         /// <summary>
@@ -930,13 +931,13 @@ namespace AMS_SuperAdmin
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("AMSModel.FK__Appointme__UserI__3F466844", "Users");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("AMSModel.FK__Appointme__UserI__4BAC3F29", "Users");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<User>("AMSModel.FK__Appointme__UserI__3F466844", "Users", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<User>("AMSModel.FK__Appointme__UserI__4BAC3F29", "Users", value);
                 }
             }
         }
@@ -961,12 +962,14 @@ namespace AMS_SuperAdmin
         /// <param name="appAvailID">Initial value of the AppAvailID property.</param>
         /// <param name="dayPrefID">Initial value of the DayPrefID property.</param>
         /// <param name="appDate">Initial value of the AppDate property.</param>
-        public static AppointmentAvail CreateAppointmentAvail(global::System.Int32 appAvailID, global::System.Int32 dayPrefID, global::System.DateTime appDate)
+        /// <param name="userID">Initial value of the UserID property.</param>
+        public static AppointmentAvail CreateAppointmentAvail(global::System.Int32 appAvailID, global::System.Int32 dayPrefID, global::System.DateTime appDate, global::System.Int32 userID)
         {
             AppointmentAvail appointmentAvail = new AppointmentAvail();
             appointmentAvail.AppAvailID = appAvailID;
             appointmentAvail.DayPrefID = dayPrefID;
             appointmentAvail.AppDate = appDate;
+            appointmentAvail.UserID = userID;
             return appointmentAvail;
         }
 
@@ -1052,6 +1055,30 @@ namespace AMS_SuperAdmin
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 UserID
+        {
+            get
+            {
+                return _UserID;
+            }
+            set
+            {
+                OnUserIDChanging(value);
+                ReportPropertyChanging("UserID");
+                _UserID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("UserID");
+                OnUserIDChanged();
+            }
+        }
+        private global::System.Int32 _UserID;
+        partial void OnUserIDChanging(global::System.Int32 value);
+        partial void OnUserIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Boolean> Status
@@ -1084,16 +1111,16 @@ namespace AMS_SuperAdmin
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("AMSModel", "FK__Appointme__DayPr__3D5E1FD2", "DayPreferences")]
+        [EdmRelationshipNavigationPropertyAttribute("AMSModel", "FK__Appointme__DayPr__534D60F1", "DayPreferences")]
         public DayPreference DayPreference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<DayPreference>("AMSModel.FK__Appointme__DayPr__3D5E1FD2", "DayPreferences").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<DayPreference>("AMSModel.FK__Appointme__DayPr__534D60F1", "DayPreferences").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<DayPreference>("AMSModel.FK__Appointme__DayPr__3D5E1FD2", "DayPreferences").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<DayPreference>("AMSModel.FK__Appointme__DayPr__534D60F1", "DayPreferences").Value = value;
             }
         }
         /// <summary>
@@ -1105,13 +1132,51 @@ namespace AMS_SuperAdmin
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<DayPreference>("AMSModel.FK__Appointme__DayPr__3D5E1FD2", "DayPreferences");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<DayPreference>("AMSModel.FK__Appointme__DayPr__534D60F1", "DayPreferences");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<DayPreference>("AMSModel.FK__Appointme__DayPr__3D5E1FD2", "DayPreferences", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<DayPreference>("AMSModel.FK__Appointme__DayPr__534D60F1", "DayPreferences", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("AMSModel", "FK__Appointme__UserI__5441852A", "Users")]
+        public User User
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("AMSModel.FK__Appointme__UserI__5441852A", "Users").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("AMSModel.FK__Appointme__UserI__5441852A", "Users").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<User> UserReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("AMSModel.FK__Appointme__UserI__5441852A", "Users");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<User>("AMSModel.FK__Appointme__UserI__5441852A", "Users", value);
                 }
             }
         }
@@ -1305,18 +1370,18 @@ namespace AMS_SuperAdmin
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("AMSModel", "FK__Users__CompanyID__4316F928", "Users")]
+        [EdmRelationshipNavigationPropertyAttribute("AMSModel", "FK__Users__CompanyID__398D8EEE", "Users")]
         public EntityCollection<User> Users
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<User>("AMSModel.FK__Users__CompanyID__4316F928", "Users");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<User>("AMSModel.FK__Users__CompanyID__398D8EEE", "Users");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<User>("AMSModel.FK__Users__CompanyID__4316F928", "Users", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<User>("AMSModel.FK__Users__CompanyID__398D8EEE", "Users", value);
                 }
             }
         }
@@ -1562,18 +1627,18 @@ namespace AMS_SuperAdmin
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("AMSModel", "FK__Appointme__CustI__3E52440B", "Appointments")]
+        [EdmRelationshipNavigationPropertyAttribute("AMSModel", "FK__Appointme__CustI__4AB81AF0", "Appointments")]
         public EntityCollection<Appointment> Appointments
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Appointment>("AMSModel.FK__Appointme__CustI__3E52440B", "Appointments");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Appointment>("AMSModel.FK__Appointme__CustI__4AB81AF0", "Appointments");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Appointment>("AMSModel.FK__Appointme__CustI__3E52440B", "Appointments", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Appointment>("AMSModel.FK__Appointme__CustI__4AB81AF0", "Appointments", value);
                 }
             }
         }
@@ -1721,18 +1786,18 @@ namespace AMS_SuperAdmin
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("AMSModel", "FK__Appointme__DayPr__3D5E1FD2", "AppointmentAvail")]
+        [EdmRelationshipNavigationPropertyAttribute("AMSModel", "FK__Appointme__DayPr__534D60F1", "AppointmentAvail")]
         public EntityCollection<AppointmentAvail> AppointmentAvails
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<AppointmentAvail>("AMSModel.FK__Appointme__DayPr__3D5E1FD2", "AppointmentAvail");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<AppointmentAvail>("AMSModel.FK__Appointme__DayPr__534D60F1", "AppointmentAvail");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<AppointmentAvail>("AMSModel.FK__Appointme__DayPr__3D5E1FD2", "AppointmentAvail", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<AppointmentAvail>("AMSModel.FK__Appointme__DayPr__534D60F1", "AppointmentAvail", value);
                 }
             }
         }
@@ -1743,16 +1808,16 @@ namespace AMS_SuperAdmin
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("AMSModel", "FK__DayPrefer__UserP__403A8C7D", "UserPreferences")]
+        [EdmRelationshipNavigationPropertyAttribute("AMSModel", "FK__DayPrefer__UserP__36B12243", "UserPreferences")]
         public UserPreference UserPreference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<UserPreference>("AMSModel.FK__DayPrefer__UserP__403A8C7D", "UserPreferences").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<UserPreference>("AMSModel.FK__DayPrefer__UserP__36B12243", "UserPreferences").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<UserPreference>("AMSModel.FK__DayPrefer__UserP__403A8C7D", "UserPreferences").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<UserPreference>("AMSModel.FK__DayPrefer__UserP__36B12243", "UserPreferences").Value = value;
             }
         }
         /// <summary>
@@ -1764,13 +1829,13 @@ namespace AMS_SuperAdmin
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<UserPreference>("AMSModel.FK__DayPrefer__UserP__403A8C7D", "UserPreferences");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<UserPreference>("AMSModel.FK__DayPrefer__UserP__36B12243", "UserPreferences");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<UserPreference>("AMSModel.FK__DayPrefer__UserP__403A8C7D", "UserPreferences", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<UserPreference>("AMSModel.FK__DayPrefer__UserP__36B12243", "UserPreferences", value);
                 }
             }
         }
@@ -1781,18 +1846,18 @@ namespace AMS_SuperAdmin
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("AMSModel", "FK__TimePrefe__DayPr__412EB0B6", "TimePreferences")]
+        [EdmRelationshipNavigationPropertyAttribute("AMSModel", "FK__TimePrefe__DayPr__37A5467C", "TimePreferences")]
         public EntityCollection<TimePreference> TimePreferences
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TimePreference>("AMSModel.FK__TimePrefe__DayPr__412EB0B6", "TimePreferences");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TimePreference>("AMSModel.FK__TimePrefe__DayPr__37A5467C", "TimePreferences");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TimePreference>("AMSModel.FK__TimePrefe__DayPr__412EB0B6", "TimePreferences", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TimePreference>("AMSModel.FK__TimePrefe__DayPr__37A5467C", "TimePreferences", value);
                 }
             }
         }
@@ -2110,16 +2175,16 @@ namespace AMS_SuperAdmin
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("AMSModel", "FK__TimePrefe__DayPr__412EB0B6", "DayPreferences")]
+        [EdmRelationshipNavigationPropertyAttribute("AMSModel", "FK__TimePrefe__DayPr__37A5467C", "DayPreferences")]
         public DayPreference DayPreference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<DayPreference>("AMSModel.FK__TimePrefe__DayPr__412EB0B6", "DayPreferences").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<DayPreference>("AMSModel.FK__TimePrefe__DayPr__37A5467C", "DayPreferences").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<DayPreference>("AMSModel.FK__TimePrefe__DayPr__412EB0B6", "DayPreferences").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<DayPreference>("AMSModel.FK__TimePrefe__DayPr__37A5467C", "DayPreferences").Value = value;
             }
         }
         /// <summary>
@@ -2131,13 +2196,13 @@ namespace AMS_SuperAdmin
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<DayPreference>("AMSModel.FK__TimePrefe__DayPr__412EB0B6", "DayPreferences");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<DayPreference>("AMSModel.FK__TimePrefe__DayPr__37A5467C", "DayPreferences");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<DayPreference>("AMSModel.FK__TimePrefe__DayPr__412EB0B6", "DayPreferences", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<DayPreference>("AMSModel.FK__TimePrefe__DayPr__37A5467C", "DayPreferences", value);
                 }
             }
         }
@@ -2435,18 +2500,18 @@ namespace AMS_SuperAdmin
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("AMSModel", "FK__Appointme__UserI__3F466844", "Appointments")]
-        public EntityCollection<Appointment> Appointments
+        [EdmRelationshipNavigationPropertyAttribute("AMSModel", "FK__Appointme__UserI__5441852A", "AppointmentAvail")]
+        public EntityCollection<AppointmentAvail> AppointmentAvails
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Appointment>("AMSModel.FK__Appointme__UserI__3F466844", "Appointments");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<AppointmentAvail>("AMSModel.FK__Appointme__UserI__5441852A", "AppointmentAvail");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Appointment>("AMSModel.FK__Appointme__UserI__3F466844", "Appointments", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<AppointmentAvail>("AMSModel.FK__Appointme__UserI__5441852A", "AppointmentAvail", value);
                 }
             }
         }
@@ -2457,16 +2522,38 @@ namespace AMS_SuperAdmin
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("AMSModel", "FK__Users__CompanyID__4316F928", "Company")]
+        [EdmRelationshipNavigationPropertyAttribute("AMSModel", "FK__Appointme__UserI__4BAC3F29", "Appointments")]
+        public EntityCollection<Appointment> Appointments
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Appointment>("AMSModel.FK__Appointme__UserI__4BAC3F29", "Appointments");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Appointment>("AMSModel.FK__Appointme__UserI__4BAC3F29", "Appointments", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("AMSModel", "FK__Users__CompanyID__398D8EEE", "Company")]
         public Company Company
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Company>("AMSModel.FK__Users__CompanyID__4316F928", "Company").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Company>("AMSModel.FK__Users__CompanyID__398D8EEE", "Company").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Company>("AMSModel.FK__Users__CompanyID__4316F928", "Company").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Company>("AMSModel.FK__Users__CompanyID__398D8EEE", "Company").Value = value;
             }
         }
         /// <summary>
@@ -2478,13 +2565,13 @@ namespace AMS_SuperAdmin
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Company>("AMSModel.FK__Users__CompanyID__4316F928", "Company");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Company>("AMSModel.FK__Users__CompanyID__398D8EEE", "Company");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Company>("AMSModel.FK__Users__CompanyID__4316F928", "Company", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Company>("AMSModel.FK__Users__CompanyID__398D8EEE", "Company", value);
                 }
             }
         }
@@ -2495,18 +2582,18 @@ namespace AMS_SuperAdmin
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("AMSModel", "FK__UserPrefe__UserI__4222D4EF", "UserPreferences")]
+        [EdmRelationshipNavigationPropertyAttribute("AMSModel", "FK__UserPrefe__UserI__38996AB5", "UserPreferences")]
         public EntityCollection<UserPreference> UserPreferences
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<UserPreference>("AMSModel.FK__UserPrefe__UserI__4222D4EF", "UserPreferences");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<UserPreference>("AMSModel.FK__UserPrefe__UserI__38996AB5", "UserPreferences");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<UserPreference>("AMSModel.FK__UserPrefe__UserI__4222D4EF", "UserPreferences", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<UserPreference>("AMSModel.FK__UserPrefe__UserI__38996AB5", "UserPreferences", value);
                 }
             }
         }
@@ -2680,18 +2767,18 @@ namespace AMS_SuperAdmin
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("AMSModel", "FK__DayPrefer__UserP__403A8C7D", "DayPreferences")]
+        [EdmRelationshipNavigationPropertyAttribute("AMSModel", "FK__DayPrefer__UserP__36B12243", "DayPreferences")]
         public EntityCollection<DayPreference> DayPreferences
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<DayPreference>("AMSModel.FK__DayPrefer__UserP__403A8C7D", "DayPreferences");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<DayPreference>("AMSModel.FK__DayPrefer__UserP__36B12243", "DayPreferences");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<DayPreference>("AMSModel.FK__DayPrefer__UserP__403A8C7D", "DayPreferences", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<DayPreference>("AMSModel.FK__DayPrefer__UserP__36B12243", "DayPreferences", value);
                 }
             }
         }
@@ -2702,16 +2789,16 @@ namespace AMS_SuperAdmin
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("AMSModel", "FK__UserPrefe__UserI__4222D4EF", "Users")]
+        [EdmRelationshipNavigationPropertyAttribute("AMSModel", "FK__UserPrefe__UserI__38996AB5", "Users")]
         public User User
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("AMSModel.FK__UserPrefe__UserI__4222D4EF", "Users").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("AMSModel.FK__UserPrefe__UserI__38996AB5", "Users").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("AMSModel.FK__UserPrefe__UserI__4222D4EF", "Users").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("AMSModel.FK__UserPrefe__UserI__38996AB5", "Users").Value = value;
             }
         }
         /// <summary>
@@ -2723,13 +2810,13 @@ namespace AMS_SuperAdmin
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("AMSModel.FK__UserPrefe__UserI__4222D4EF", "Users");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("AMSModel.FK__UserPrefe__UserI__38996AB5", "Users");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<User>("AMSModel.FK__UserPrefe__UserI__4222D4EF", "Users", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<User>("AMSModel.FK__UserPrefe__UserI__38996AB5", "Users", value);
                 }
             }
         }

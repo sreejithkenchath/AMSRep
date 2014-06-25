@@ -15,9 +15,10 @@ namespace AMS.Controllers
         // GET: /Customer/
 
         [AllowAnonymous]
-        public void  Index()
+        public ActionResult  Index()
         {
-            Response.Redirect("Index.cshtml");
+            return View();
+            //Response.Redirect("Index.cshtml");
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
