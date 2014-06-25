@@ -19,8 +19,8 @@
             var item = event.args.item;
             if (item) {
                 selected = item.value;
-                $.post("/Preference/Test", { Day: item.value }).done(function(data) {
-                    alert('JSON.stringify(data)');
+                $.post("/Preference/GetContent", { Day: item.value }).done(function(data) {
+                   // alert('JSON.stringify(data)');
                 });
             }
         }
@@ -41,7 +41,7 @@
     });
 
     function validate() {
-        alert('validate fn');
+        //alert('validate fn');
         var timeRegEx = new RegExp(/^([01]?[0-9]|2[0-3]):[0-5][0-9]$/);
         if ($("#TimeTo1").val().match(timeRegEx) && $("#TimeTo2").val().match(timeRegEx) && $("#TimeFrom1").val().match(timeRegEx) && $("#TimeFrom2").val().match(timeRegEx)) {
             $("#lblValidate").text('');

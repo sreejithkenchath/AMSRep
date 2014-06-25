@@ -5,7 +5,7 @@ using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
-namespace AMS.Models
+namespace AMS
 {
     [MetadataType(typeof(CustomerMetadata))]
     public partial class Customer

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebMatrix.WebData;
+using AMS.Models;
 
 namespace AMS.Controllers
 {
@@ -19,6 +20,8 @@ namespace AMS.Controllers
         {
             amsFacade = new AMSBLLFacade.AMSBLLFacade();
         }
+
+        [Authorize(Roles = "User")]
         public ActionResult Create()
         {
             ViewBag.UserID = new SelectList(db.Users, "UserID", "UserFirstName");   
@@ -33,21 +36,21 @@ namespace AMS.Controllers
         {
             if (ModelState.IsValid)
             {
-                amsFacade.createUserPreferencesAndAppointmentSlots(userpreference);
+                amsFacade.createUserPreference(userpreference);
                 return RedirectToAction("DayTimePreference");
             }
 
             ViewBag.UserID = new SelectList(db.Users, "UserID", "UserFirstName", userpreference.UserID);
             return View(userpreference);
         }
-
+        [Authorize(Roles = "User")]
         public ActionResult DayTimePreference(UserPreference userpreference)
         {
            // ViewBag.UserID = new SelectList(db.Users, "UserID", "UserFirstName");
             return View(userpreference);
         }
         [HttpPost]
-        public JsonResult Test(string day)
+        public JsonResult GetContent(string day)
         {
             List<TimePreference> tf = amsFacade.GetDayTimePreferences(WebSecurity.CurrentUserId,day);
             return Json(tf, JsonRequestBehavior.AllowGet);
@@ -65,6 +68,25 @@ namespace AMS.Controllers
             db.Dispose();
             base.Dispose(disposing);
         }
-        
+        [Authorize(Roles = "User")]
+        public ActionResult CreateAppointmentSlots()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateAppointmentSlots(AppointmentSlots slot)
+        {
+            if (ModelState.IsValid)
+            {
+                int userId = WebSecurity.CurrentUserId;
+                //amsFacade.CreateSlots(slot,userId);
+                ViewBag.Message = amsFacade.CreateSlots(slot,userId);
+            }
+
+           // ViewBag.UserID = new SelectList(db.Users, "UserID", "UserFirstName", userpreference.UserID);
+            return View(slot);
+        }
+
     }
 }

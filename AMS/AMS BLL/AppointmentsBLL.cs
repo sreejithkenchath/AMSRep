@@ -15,45 +15,54 @@ namespace AMS.AMS_BLL
         protected IRepository DataStore { get; set; }
         protected string[] Includes { get; set; }
 
-        public string CreateAppointmentSlots(int userId)
+        public AppointmentsBLL()
+        {
+            DataStore = new EFRepository();
+        }
+
+        public string CreateAppointmentSlots(int numberOf, int userId)
         {
             DateTime appointmentStartDate;
             DateTime appointmentEndDate;
-            Includes = new[] { "UserPreferences" };
-            User user = DataStore.Get<User>(e => e.MembershipUserID == WebSecurity.CurrentUserId);
-            UserPreference userPreference = user.UserPreferences.FirstOrDefault();
-            int availableAppointmentCount = user.AppointmentAvails.Where(e => e.Status == true).ToList().Count();
-            if (availableAppointmentCount != 0)
+            Includes = new[] { "UserPreferences", "AppointmentAvails" };
+            User user = DataStore.Get<User>(e => e.MembershipUserID == userId,Includes);
+            UserPreference tempUserPreference = user.UserPreferences.FirstOrDefault();
+            Includes = new[] { "DayPreferences"};
+            UserPreference userPreference = DataStore.Get<UserPreference>(e => e.UserPrefID == tempUserPreference.UserPrefID,Includes);
+            int availableAppointmentCount = user.AppointmentAvails.ToList().Count();
+            if (userPreference != null)
             {
-                appointmentStartDate = user.AppointmentAvails.LastOrDefault().AppDate.AddDays(1);
-                appointmentEndDate = appointmentStartDate.AddDays(userPreference.BookingDays - availableAppointmentCount);
-            }
-            else
-            {
-                appointmentStartDate = DateTime.Now;
-                appointmentEndDate = appointmentStartDate.AddDays(userPreference.BookingDays);
-            }
-    
-            for (DateTime date = appointmentStartDate; date <= appointmentEndDate; date=date.AddDays(1))
-            {
-                foreach (DayPreference dayPreference in userPreference.DayPreferences)
+                if (availableAppointmentCount != 0)
                 {
-                    if ((int) date.DayOfWeek == Convert.ToInt32(dayPreference.Day))
-                    {
-                        AppointmentAvail appointmentAvail = new AppointmentAvail();
-                        appointmentAvail.AppDate = date;
-                        appointmentAvail.DayPreference = dayPreference;
-                        appointmentAvail.User = user;
-                        user.AppointmentAvails.Add(appointmentAvail);
-                        DataStore.Create<AppointmentAvail>(appointmentAvail);
-                        break;
-       
-                    }
+                    appointmentStartDate = user.AppointmentAvails.LastOrDefault().AppDate.AddDays(1);
+                    appointmentEndDate = appointmentStartDate.AddDays(numberOf);
                 }
-                
-            }
+                else
+                {
+                    appointmentStartDate = DateTime.Now;
+                    appointmentEndDate = appointmentStartDate.AddDays(numberOf);
+                }
+                for (DateTime date = appointmentStartDate; date <= appointmentEndDate; date = date.AddDays(1))
+                {
+                    foreach (DayPreference dayPreference in userPreference.DayPreferences)
+                    {
+                        if ((int)date.DayOfWeek == Convert.ToInt32(dayPreference.Day))
+                        {
+                            AppointmentAvail appointmentAvail = new AppointmentAvail();
+                            appointmentAvail.AppDate = date;
+                            appointmentAvail.DayPreference = dayPreference;
+                            appointmentAvail.User = user;
+                            user.AppointmentAvails.Add(appointmentAvail);
+                            DataStore.Create<AppointmentAvail>(appointmentAvail);
+                            break;
 
-            return "";
+                        }
+                    }
+
+                }
+                return "slots created successfully";
+            }
+            return "Could not create";
         } 
     }
 }

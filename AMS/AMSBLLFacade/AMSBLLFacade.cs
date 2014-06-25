@@ -45,7 +45,7 @@ namespace AMS.AMSBLLFacade
             appBll = new AppointmentsBLL();
         }
 
-        public string createUserPreferencesAndAppointmentSlots(UserPreference userpreference)
+        public string createUserPreference(UserPreference userpreference)
         {
             return user.SetUserPreferences(userpreference);
             //appBll.CreateAppointmentSlots
@@ -59,6 +59,11 @@ namespace AMS.AMSBLLFacade
         public string setDayTimePreference(int p, string day, string firstFrom, string firstTo, string secondFrom, string secondTo)
         {
            return user.setDayTimePreference(p, day, firstFrom, firstTo, secondFrom, secondTo);
+        }
+
+        public string CreateSlots(Models.AppointmentSlots slot, int userId)
+        {
+            appBll.CreateAppointmentSlots(slot.numberOfdays, userId);
         }
     }
 }
