@@ -63,7 +63,7 @@ namespace AMS.AMSBLLFacade
 
         public string CreateSlots(Models.AppointmentSlots slot, int userId)
         {
-            appBll.CreateAppointmentSlots(slot.numberOfdays, userId);
+            return appBll.CreateAppointmentSlots(slot.numberOfdays, userId);
         }
     }
 }
