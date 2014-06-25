@@ -223,6 +223,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\AppointmentSlots.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\AppointmentList.cs" />
     <Compile Include="Models\User.cs" />
@@ -487,6 +488,7 @@
     <Content Include="Views\User\Delete.cshtml" />
     <Content Include="Views\Appointment\Index.cshtml" />
     <Content Include="Views\User\MyProfile.cshtml" />
+    <Content Include="Views\Preference\CreateAppointmentSlots.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
