@@ -117,7 +117,14 @@ namespace AMS_SuperAdmin.BLL
             content += "\n\n" + "Your username is \"" + uName + "\" and your system generated password is \"" + uPass + "\".";
             content += "\n\n" + "Please change your password after logging in.";
             content += "\n\n" + "Regards,\n" + "The AMS Team";
-            Emailer.Send(uEmail, subject, content);
+            try
+            {
+                Emailer.Send(uEmail, subject, content);
+            }
+            catch (Exception ex)
+            {
+                WebSecurity.ChangePassword(uName, uPass, "default");
+            }
         }
 
         private bool ValidateUserAdminFormat(string uName, string uEmail, string fName, string lName, string title, string description, string phone, int companyID)
