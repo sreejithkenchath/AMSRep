@@ -41,7 +41,7 @@
 
     
 
-    	<!-- Push Wrapper -->
+    	@*<!-- Push Wrapper -->
 	<div id="mp-pusher" class="mp-pusher">
 		<!-- menu -->
 		<nav id="mp-menu" class="mp-menu">
@@ -61,7 +61,7 @@
 			</div>
 		</nav>
 		<!-- /mp-menu --></div>
-	<!-- /pusher -->
+	<!-- /pusher -->*@
 
     <div class="header">
         <div class="container">
@@ -105,8 +105,7 @@
     <div class="breadcrumb_holder">
         <div class="container">
             <ol class="breadcrumb">
-                <li><a href="#">Home</a></li><li><a href="#">About Us</a></li>
-                <li ><span class="activebread">Dashboard</span></li>
+                <li><a href="@Url.Action("Index", "Home")">Home</a></li>
                 <li><a href="@Url.Action("Index", "Company")" >Edit Company</a></li>
                 <li><a href="@Url.Action("Index", "User")" >Users </a></li>
                 
@@ -120,10 +119,11 @@
     <div class="breadcrumb_holder">
         <div class="container">
             <ol class="breadcrumb">
-                <li><a href="#">Home</a></li><li><a href="#">About Us</a></li>
-                <li ><span class="activebread">Dashboard</span></li>
-                <li><a href="@Url.Action("Index", "Appointment")" >My Appointments</a></li>
-                <li><a href="@Url.Action("MyProfile", "User")" >User Profile</a></li>
+                <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                    <li><a href="@Url.Action("MyProfile", "User")" >User Profile</a></li>
+                <li><a href="@Url.Action("Create", "Preference")" >User Preference</a></li>
+                 <li><a href="@Url.Action("DayTimePreference", "Preference")" >Day Preference</a></li>
+             <li><a href="@Url.Action("CreateAppointmentSlots", "Preference")" >Create Slots</a></li>
             </ol>
         </div>
         </div>
@@ -136,15 +136,14 @@
     <div class="breadcrumb_holder">
         <div class="container">
             <ol class="breadcrumb">
-                <li><a href="#">Home</a></li><li><a href="#">About Us</a></li>
-                <li ><span class="activebread">Dashboard</span></li>
-                <li><a href="@Url.Action("Index", "Company")" >Edit Company</a></li>
-                <li><a href="@Url.Action("Users", "Users")" >My Appointments</a></li>
+                <li><a href="@Url.Action("Index", "Home")" >Home</a></li>
+                <li><a href="@Url.Action("Appointment", "Appointment")" >Take Appointment</a></li>
             </ol>
         </div>
 
     </div>
     }
+    
     <div class="container">
         <div class="row">
             
