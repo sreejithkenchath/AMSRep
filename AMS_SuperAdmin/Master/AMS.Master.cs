@@ -1,4 +1,13 @@
-﻿using System;
+﻿/*
+ * Author:
+ *      Gan Zhexian Timothy
+ * Version:
+ *      1.2
+ *  Summary:
+ *      Code behind for master page, forcing login
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;

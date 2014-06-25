@@ -1,4 +1,13 @@
-﻿using System;
+﻿/*
+ * Author:
+ *      Gan Zhexian Timothy
+ * Version:
+ *      2.2
+ *  Summary:
+ *      Business logic layer for User Admin
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;

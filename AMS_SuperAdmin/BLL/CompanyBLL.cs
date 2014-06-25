@@ -1,4 +1,15 @@
-﻿using System;
+﻿/*
+ * Author:
+ *      Gan Zhexian Timothy
+ * Version:
+ *      2.3
+ *  Summary:
+ *      Business logic layer for Company
+ */
+
+
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;

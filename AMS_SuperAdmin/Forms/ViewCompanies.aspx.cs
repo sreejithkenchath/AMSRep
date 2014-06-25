@@ -1,4 +1,13 @@
-﻿using System;
+﻿/*
+ * Author:
+ *      Gan Zhexian Timothy
+ * Version:
+ *      1.5
+ *  Summary:
+ *     Code behind for viewing companies
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;

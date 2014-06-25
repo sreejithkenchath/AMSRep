@@ -1,4 +1,13 @@
-﻿using System;
+﻿/*
+ * Author:
+ *      Gan Zhexian Timothy
+ * Version:
+ *      2.0
+ *  Summary:
+ *      Code behind for creating a user admin
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
