@@ -28,6 +28,7 @@ namespace AMS.Controllers
             return View();
 
         }
+        [Authorize(Roles="User")]
         public ActionResult Index()
         {
             AppointmentBLL ab = new AppointmentBLL();

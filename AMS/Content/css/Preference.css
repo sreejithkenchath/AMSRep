@@ -1,0 +1,13 @@
+﻿.fullDiv {
+    height: 400px;
+    width: 80%;
+  
+    float:left;
+}
+.halfDiv {
+    height: 400px;
+    width: 45%;
+   
+    float: left;
+    margin-left: 30px;
+}
