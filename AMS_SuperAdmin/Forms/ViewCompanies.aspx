@@ -3,7 +3,7 @@
 <div class="breadcrumb_holder">
         <div class="container">
             <ol class="breadcrumb">
-                <li><a href="#">Home</a></li><li><a href="#">About Us</a></li><li><a href="#">Dashboard</a></li><li><a href="CreateCompany.aspx">Create Company</a></li>
+                <li><a href="CreateCompany.aspx">Create Company</a></li>
                 <li ><span class="activebread">View Company</span></li>
             </ol>
         </div>
@@ -21,7 +21,9 @@
                                     <asp:BoundField DataField="CompanyPhone" HeaderText="CompanyPhone" />
                                     <asp:BoundField DataField="UserAdmins" HeaderText="UserAdmins" />
                                     <asp:HyperLinkField DataNavigateUrlFields="AddUserAdmin" DataNavigateUrlFormatString="CreateUserAdmin.aspx?companyID={0}"
-                    DataTextField="AddUserAdmin" NavigateUrl="hello" HeaderText="AddUserAdmin" />
+                    DataTextField="AddUserAdmin" NavigateUrl="" HeaderText="AddUserAdmin" />
+                                    <asp:HyperLinkField DataNavigateUrlFields="DeleteCompany" DataNavigateUrlFormatString="DeleteCompany.aspx?companyID={0}"
+                    DataTextField="DeleteCompany" NavigateUrl="" HeaderText="DeleteCompany" />
                                 </Columns>
                                 </asp:GridView>
                             </div>

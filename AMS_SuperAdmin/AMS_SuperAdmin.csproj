@@ -91,6 +91,7 @@
     <Content Include="Content\js\modernizr.custom.js" />
     <Content Include="Content\js\sb-admin.js" />
     <Content Include="Forms\CreateUserAdmin.aspx" />
+    <Content Include="Forms\DeleteCompany.aspx" />
     <Content Include="Forms\Home.aspx" />
     <Content Include="Forms\Login.aspx" />
     <Content Include="Forms\CreateCompany.aspx" />
@@ -103,20 +104,28 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AMS.Designer.cs">
+    <Compile Include="AMSEntities.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AMS.edmx</DependentUpon>
+      <DependentUpon>AMSEntities.edmx</DependentUpon>
     </Compile>
+    <Compile Include="BLL\CompanyBLL.cs" />
+    <Compile Include="BLL\UserAdminBLL.cs" />
     <Compile Include="Forms\CreateUserAdmin.aspx.cs">
       <DependentUpon>CreateUserAdmin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Forms\CreateUserAdmin.aspx.designer.cs">
       <DependentUpon>CreateUserAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DeleteCompany.aspx.cs">
+      <DependentUpon>DeleteCompany.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\DeleteCompany.aspx.designer.cs">
+      <DependentUpon>DeleteCompany.aspx</DependentUpon>
     </Compile>
     <Compile Include="Forms\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
@@ -158,13 +167,6 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\Emailer.cs" />
-    <Compile Include="WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -173,9 +175,9 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="AMS.edmx">
+    <EntityDeploy Include="AMSEntities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>AMS.Designer.cs</LastGenOutput>
+      <LastGenOutput>AMSEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="Content\fonts\.DS_Store" />
     <None Include="Content\fonts\codropsicons\.DS_Store" />
@@ -191,7 +193,6 @@
     <Content Include="Master\AMS.Master" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="AMS_SuperAdmin BLL\" />
     <Folder Include="Model\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

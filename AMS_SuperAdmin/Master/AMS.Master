@@ -43,18 +43,14 @@
                     <div class="col-md-4 col-xs-12 header_right">
 
                         <div class="user_info">
-                            <a href="#" class="logout">
+                            <a href="Login.aspx" class="logout">
                                 <img alt="" src="../Content/images/logout.png" /></a>
-                            <span>Welcome <a class="username">User</a></span>
+                            <asp:Label class="username" id="username" Text="" runat="server"/>
                             <img class="img-responsive pull-right user_icon" alt="" src="../Content/images/user_icon.png" />
                         </div>
 
                         <div class="user_sep"></div>
 
-                        <div class="user_info pull-right">
-                            <span><a  id="trigger" class="menu">Menu</a></span>
-                            <img class="img-responsive pull-right user_icon" alt="" src="../Content/images/menu_icon.png" />
-                        </div>
 
                     </div>
 
@@ -96,7 +92,8 @@
     <div class="container">
         <div class="col-md-1 col-xs-4"></div>
         <div class="col-md-8"></div>
-        <div class="col-md-3 col-xs-8"><p class="copyright">&copy; 2014. All Rights Reserved<br />developed by <a target="_blank" href="#">Team 5FT</a></p></div>
+        <div class="col-md-3 col-xs-8"><p class="copyright">&copy; 2014. All Rights Reserved<br />
+developed by <a target="_blank" href="#">Team 5FT</a></p></div>
     </div>
 </div>
 <!---menu scripts--->

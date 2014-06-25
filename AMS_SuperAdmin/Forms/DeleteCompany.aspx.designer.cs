@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AMS_SuperAdmin
+namespace AMS_SuperAdmin.Forms
 {
 
 
-    public partial class WebForm1
+    public partial class DeleteCompany
     {
 
         /// <summary>

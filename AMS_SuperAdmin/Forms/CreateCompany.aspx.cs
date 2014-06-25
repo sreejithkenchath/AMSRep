@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using WebMatrix.WebData;
+using AMS_SuperAdmin.BLL;
 
 namespace AMS_SuperAdmin.Forms
 {
@@ -15,19 +16,25 @@ namespace AMS_SuperAdmin.Forms
 
         }
 
+        /** User clicks "Submit" button on aspx page */
         protected void submit_Click(object sender, EventArgs e)
         {
-            AMSEntities ae = new AMSEntities();
-            Company company = new Company();
-            company.CompanyName = this.cName.Text;
-            company.CompanyAddress = this.cAddress.Text;
-            company.CompanyPhone = this.cPhone.Text;
-            company.CompanyStatus = true;
-            ae.Companies.AddObject(company);
-            ae.SaveChanges();
-
-            string url = "CreateUserAdmin.aspx" + "?companyID=" + company.CompanyID;
-            Server.Transfer(url, true);
+            CompanyBLL cbll = new CompanyBLL();
+            try
+            {
+                //reset server validation text on aspx page
+                this.ServerValidation.Text = "";
+                //create new company using BLL class
+                int companyID = cbll.CreateCompany(this.cName.Text, this.cAddress.Text, this.cPhone.Text);
+                //redirect user to create a new user admin for the created company
+                string url = "CreateUserAdmin.aspx" + "?companyID=" + companyID;
+                Server.Transfer(url, true);
+            }
+            catch (Exception ex)
+            {
+                //set server validation text on aspx page if server side validation fails
+                this.ServerValidation.Text = ex.Message;
+            }
         }
     }
 }

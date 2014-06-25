@@ -12,17 +12,19 @@ namespace AMS_SuperAdmin.Forms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            WebSecurity.Logout();
+            Session.Remove("Username"); 
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
             if (WebSecurity.Login(txtUserName.Text, txtPassword.Text, persistCookie: true))
             {
-                int i = 1;
+                Session["Username"] = txtUserName.Text;
+                Response.Redirect("ViewCompanies.aspx");
             }
             else {
-                int i = 8;
+                Response.Redirect("Login.aspx");
             }
         }
     }
